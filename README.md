@@ -27,8 +27,18 @@ Como apoyo puntual, la **escalera de los cuatro niveles de prototipado** (de los
 ## Estructura
 
 ```text
-└── index.html   # la presentación entera: HTML, CSS y los tres gráficos en SVG en línea
+├── index.html                       # la presentación entera: HTML, CSS y los tres gráficos en SVG en línea
+└── actividad-1-apps-for-good.pdf    # la misma presentación en PDF, una diapositiva por página
 ```
+
+### El PDF
+
+Se genera desde el propio HTML, sin herramientas externas, y la página tiene **exactamente las medidas del lienzo de diseño** (1240 x 698 px = 930 x 523,92 pt), de modo que el PDF es el diseño y no una reinterpretación: las columnas, la diana y los gráficos caen donde se revisaron.
+
+Dos detalles que costaron encontrar y conviene no volver a pisar:
+
+- Chrome **ignora el `@page { size }`** del CSS salvo que se le pase `preferCSSPageSize`. El comando `agent-browser pdf` no expone esa opción, así que la generación va por el protocolo DevTools (`Page.printToPDF` con `preferCSSPageSize` y `printBackground`). Sin eso, el PDF sale en carta apaisada, la maquetación se reflowa y la composición se rompe.
+- En impresión, `.slide` no puede ser `position: static`: el pie de página es absoluto y se queda sin referencia, así que desaparece de todas las páginas. Se apilan con `position: relative` más `break-after`.
 
 Sin paso de compilación ni dependencias: un HTML con el CSS y el SVG en línea, servido directamente por GitHub Pages. Se versiona tal cual se publica, sin `node_modules` ni CI de por medio.
 

@@ -72,9 +72,10 @@
   .num{font:600 13px var(--mono);color:var(--accent)}
 
   /* ---------- portada ---------- */
-  .cover-head{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
-    font:500 10.5px var(--mono);letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft);
-    border-bottom:1px solid var(--line);padding-bottom:10px}
+  .cover-head{display:grid;gap:7px;align-content:start;
+    font:500 10.5px/1.3 var(--mono);letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft);
+    border-bottom:1px solid var(--line);padding-bottom:12px}
+  .cover-head .prog{color:var(--ink);letter-spacing:.13em}
   .cover{display:grid;grid-template-columns:1.12fr .88fr;gap:26px;align-content:center;height:100%;position:relative}
   .cover:before{content:"";position:absolute;right:-90px;top:-150px;width:540px;height:540px;border-radius:50%;
     background:radial-gradient(circle at 38% 38%,var(--accent-soft),transparent 62%);opacity:.85;z-index:0}
@@ -87,14 +88,23 @@
   /* ---------- utilidades de rejilla ---------- */
   .two{display:grid;grid-template-columns:1.02fr .98fr;gap:44px;align-items:center;height:100%}
   .three{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-  .stack{display:grid;gap:14px}
+  .stack{display:grid;gap:12px}
 
   /* ---------- tarjetas ---------- */
-  .card{border:1px solid var(--line);background:#fbf9f4;padding:18px 18px 16px;border-radius:2px}
+  .card{border:1px solid var(--line);background:#fbf9f4;padding:16px 17px 14px;border-radius:2px}
   .card .tag{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
   .card p{font-size:15px;line-height:1.5;margin-top:6px;color:#3a372e}
   .card.win{border-left:3px solid var(--data)}
   .card.bad{border-left:3px solid var(--accent);background:#fdf4f1}
+  .anchor{display:block;margin-top:9px;padding-top:7px;border-top:1px dashed var(--line);
+    font:400 11.5px var(--mono);color:var(--ink-soft);letter-spacing:.02em}
+  .desc{font-size:13.6px;line-height:1.48;color:#2e2c24;text-align:justify;hyphens:auto}
+  .temp{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);
+    font:400 12.5px/1.45 var(--mono);color:var(--ink-soft)}
+  .temp b{color:var(--data);font-weight:500}
+  /* el grafico no debe dictar el alto de la diapositiva: se ajusta al hueco disponible */
+  .dwrap{position:relative;height:100%;min-height:300px}
+  .dwrap svg{position:absolute;inset:0;width:100%;height:100%;display:block}
 
   /* ---------- pasos (cómo funciona) ---------- */
   ol.steps{list-style:none;margin:0;padding:0;display:grid;gap:11px;counter-reset:s}
@@ -146,14 +156,21 @@
     font:400 11.5px var(--mono);color:var(--ink-soft);border-top:1px solid var(--line);padding-top:9px}
 
   @media print{
-    @page{size:A4 landscape;margin:0}
-    html,body{background:#fff}
+    /* La pagina impresa tiene exactamente las medidas del lienzo de diseno, para que
+       el PDF sea el diseno y no una reinterpretacion: asi la composicion de columnas,
+       la diana y los graficos caen donde se revisaron. */
+    @page{size:1240px 698px;margin:0}
+    html,body{background:var(--paper)}
     .bar,.pbar{display:none}
     .deck{padding:0;display:block}
-    .stage{width:100%;aspect-ratio:auto;height:auto}
-    .slide{position:static;display:grid!important;width:100%;height:100vh;box-shadow:none;break-after:page;padding:40px 46px}
+    .stage{width:1240px;height:auto;aspect-ratio:auto}
+    .slide{position:relative;display:grid!important;width:1240px;height:698px;box-shadow:none;
+      padding:52px 62px;break-inside:avoid;overflow:hidden}
+    .slide:not(:last-of-type){break-after:page}
+    .slide:last-of-type{break-after:auto}
     body::after{display:none}
     .slide .anim{animation:none!important;opacity:1!important;transform:none!important}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   }
 </style>
 </head>
@@ -165,14 +182,14 @@
   <!-- 1 · PORTADA -->
   <section class="slide fill on">
     <div class="cover-head anim">
-      <span>Universidad Internacional de La Rioja · UNIR</span>
-      <span>Máster Universitario en Formación del Profesorado · Especialidad de Tecnología e Informática</span>
+      <span class="inst">Universidad Internacional de La Rioja · UNIR</span>
+      <span class="prog">Máster Universitario en Formación del Profesorado · Especialidad de Tecnología e Informática</span>
     </div>
     <div class="cover">
       <div class="cover-text">
         <div class="kicker anim">Actividad 1 · Innovación docente e Iniciación a la Investigación Educativa</div>
         <h1 class="anim">Apps for Good</h1>
-        <p class="lede anim" style="margin-top:20px;max-width:54ch">Evaluación de la calidad del proyecto con el <em>Decálogo de un Proyecto Innovador</em> de Fundación Telefónica: diez indicadores, una escala de 0 a 4 y una conclusión incómoda.</p>
+        <p class="lede anim" style="margin-top:20px;max-width:54ch">Evaluación de la calidad del proyecto con el <em>Decálogo de un Proyecto Innovador</em> de Fundación Telefónica: diez indicadores, una escala de 0 a 4 y una conclusión que señala un déficit concreto.</p>
         <div class="byline anim">
           <span class="who">Pablo Caro Revuelta</span>
           <span>MAES · Tecnología e Informática · UNIR</span>
@@ -194,7 +211,7 @@
           </defs>
           <rect x="0" y="0" width="470" height="430" fill="url(#dots)" mask="url(#fade)"/>
 
-          <!-- 1 · bocetos -->
+          <!-- bocetos -->
           <g transform="translate(70 120) rotate(-13 85 140)">
             <rect width="170" height="280" rx="16" fill="#fbf9f4" stroke="#cbc4b4"/>
             <rect x="24" y="32" width="64" height="9" rx="4.5" fill="#ded7c7"/>
@@ -203,7 +220,7 @@
             <rect x="24" y="196" width="86" height="9" rx="4.5" fill="#ded7c7"/>
           </g>
 
-          <!-- 2 · bloques -->
+          <!-- bloques -->
           <g transform="translate(120 96) rotate(-8 85 140)">
             <rect width="170" height="280" rx="16" fill="#fbf9f4" stroke="#cbc4b4"/>
             <g fill="#2f5d8a">
@@ -223,7 +240,7 @@
             <rect x="24" y="152" width="70" height="9" rx="4.5" fill="#ded7c7"/>
           </g>
 
-          <!-- 3 · código -->
+          <!-- código -->
           <g transform="translate(170 72) rotate(-3 85 140)">
             <rect width="170" height="280" rx="16" fill="#fbf9f4" stroke="#cbc4b4"/>
             <g rx="3">
@@ -238,7 +255,7 @@
             </g>
           </g>
 
-          <!-- 4 · producto conectado -->
+          <!-- producto conectado -->
           <g transform="translate(220 48) rotate(2 85 140)">
             <rect width="170" height="280" rx="16" fill="#fbf9f4" stroke="#16150f" stroke-width="1.6"/>
             <rect x="22" y="24" width="126" height="4" rx="2" fill="#16150f" opacity=".12"/>
@@ -287,12 +304,30 @@
     <div class="links anim" style="margin-top:20px;border-top:1px solid var(--line);padding-top:14px">
       <span class="lb">Enlace al proyecto y documentación</span>
       <span><a href="https://www.appsforgood.org/" target="_blank" rel="noopener">appsforgood.org</a> &nbsp;·&nbsp; <a href="https://www.appsforgood.org/our-course" target="_blank" rel="noopener">/our-course</a> &nbsp;·&nbsp; <a href="https://www.appsforgood.org/impact" target="_blank" rel="noopener">/impact</a> &nbsp;·&nbsp; <a href="https://www.appsforgood.org/showcase" target="_blank" rel="noopener">/showcase</a></span>
-      <span class="det">Y la ficha del proyecto en el <a href="https://www.fundaciontelefonica.com/cultura-digital/publicaciones/341/" target="_blank" rel="noopener">Top 100 Innovaciones Educativas</a> de Fundación Telefónica (2014), páginas 23 a 26.</span>
+      <span class="det">Y la ficha del proyecto en el <em>Top 100 Innovaciones Educativas</em> de Fundación Telefónica (2014), páginas 23 a 26, que se adjunta en los materiales de la asignatura.</span>
     </div>
     <div class="foot"><span>El proyecto</span><span>02</span></div>
   </section>
 
-  <!-- 3 · LA NECESIDAD -->
+  <!-- 3 · DESCRIPCIÓN -->
+  <section class="slide">
+    <div class="kicker anim">Características y descripción del proyecto</div>
+    <h2 class="anim">El proyecto en detalle</h2>
+    <div class="two" style="margin-top:12px;align-items:start;height:auto">
+      <div class="anim">
+        <p class="desc">Apps for Good es un movimiento educativo nacido en 2010 en Londres que traslada a las aulas de secundaria la lógica del emprendimiento tecnológico: los estudiantes, organizados en equipos y a lo largo de un curso escolar, identifican un problema real de su entorno que les preocupa y diseñan, prototipan y presentan una aplicación móvil o web que contribuya a resolverlo. El programa no enseña programación como contenido aislado, sino dentro del proceso completo de creación de un producto: generación de ideas, análisis de viabilidad técnica, desarrollo, modelo de negocio y comunicación. Ofrece cuatro niveles de prototipado que permiten ajustar la exigencia técnica al punto de partida del alumnado, desde los bocetos de tipo <em>wireframe</em> hasta el código real en JavaScript y el uso de API. El profesorado recibe el contenido del curso y la formación, y el programa lo conecta con profesionales voluntarios del sector tecnológico que actúan como mentores de los equipos y acercan el aula a la vida profesional real. El curso culmina en unos premios nacionales en los que los mejores equipos compiten por desarrollar su producto con apoyo de la organización. Actualmente se articula en torno a <em>AI for Good 2.0</em>, un curso modular de doce sesiones, gratuito para los centros, en el que el alumnado construye aplicaciones con inteligencia artificial orientadas al impacto social, con dos itinerarios —JavaScript o programación asistida con Canva Code— y contenidos explícitos de alfabetización y uso responsable de la IA (Fundación Telefónica, 2014, págs. 23-26; Apps for Good, s.f.).</p>
+        <p class="small" style="margin-top:8px"><b>Descripción del proyecto · 241 palabras.</b> El enunciado pide entre 200 y 300.</p>
+      </div>
+      <div class="stack anim">
+        <div class="card"><div class="tag">Objetivos generales</div><p>Vincular la educación tecnológica con la resolución de problemas reales; desarrollar la capacidad emprendedora y de programación del alumnado; y apoyar al profesorado con contenido y formación ya elaborados (Fundación Telefónica, 2014, págs. 24-25).</p></div>
+        <div class="card"><div class="tag">Áreas de conocimiento implicadas</div><p>Tecnología, Informática y Computación; de forma transversal, emprendimiento y ciudadanía digital (Fundación Telefónica, 2014, pág. 23).</p></div>
+        <div class="card win"><div class="tag">Un ejemplo concreto</div><p>En Bosworth Academy participa todo el alumnado en las sesiones con profesionales del sector, no solo los equipos con la mejor aplicación: «it helps the development of social and team working skills» (Gill Wright, responsable CREW; Apps for Good, s.f.).</p></div>
+      </div>
+    </div>
+    <div class="foot"><span>Características y descripción</span><span>03</span></div>
+  </section>
+
+  <!-- 4 · LA NECESIDAD -->
   <section class="slide">
     <div class="kicker anim">La necesidad a la que responde</div>
     <h2 class="anim">Los sistemas educativos están perdiendo talento</h2>
@@ -301,7 +336,7 @@
         <blockquote style="margin:0;border-left:3px solid var(--accent);padding:4px 0 4px 20px;font:italic 400 19px/1.5 var(--serif);color:#26241d">
           «La tecnología estimula la imaginación de los jóvenes, que quieren utilizarla para crear, jugar y compartir. Sin embargo, la escuela tradicional está muy rezagada, perdiendo la oportunidad de participar y aprovechar la tecnología para generar ricas experiencias de aprendizaje, especialmente para aquellos estudiantes más desencantados con los métodos tradicionales.»
         </blockquote>
-        <p class="small">Ficha del proyecto, pág. 24</p>
+        <p class="small">Fundación Telefónica (2014, p. 24)</p>
       </div>
       <div class="stack anim">
         <div class="card"><div class="tag">Diagnóstico 1</div><p>La escuela no prepara para el mundo real, dominado por los continuos avances tecnológicos.</p></div>
@@ -309,10 +344,10 @@
         <div class="card"><div class="tag">Diagnóstico 3</div><p>El profesorado, consciente del potencial, se siente frustrado por no poder hacer más.</p></div>
       </div>
     </div>
-    <div class="foot"><span>La necesidad</span><span>03</span></div>
+    <div class="foot"><span>La necesidad</span><span>04</span></div>
   </section>
 
-  <!-- 4 · CÓMO FUNCIONA -->
+  <!-- 5 · CÓMO FUNCIONA -->
   <section class="slide">
     <div class="kicker anim">Cómo funciona</div>
     <h2 class="anim">El proceso completo de un producto, de principio a fin</h2>
@@ -329,10 +364,10 @@
         <div class="card"><div class="tag">Lo que exige del centro</div><p>Dispositivos para trabajo por equipos, tiempo real de aula y un docente dispuesto a ceder el control del temario al alumnado.</p></div>
       </div>
     </div>
-    <div class="foot"><span>Cómo funciona</span><span>04</span></div>
+    <div class="foot"><span>Cómo funciona</span><span>05</span></div>
   </section>
 
-  <!-- 5 · ESCALERA DE PROTOTIPADO -->
+  <!-- 6 · ESCALERA DE PROTOTIPADO -->
   <section class="slide">
     <div class="kicker anim">La mejor idea del proyecto</div>
     <h2 class="anim">Cuatro niveles de prototipado, una sola clase</h2>
@@ -343,73 +378,76 @@
       <div class="step"><span class="lv">NIVEL 4 · SOCIAL</span><span class="tt">Producto conectado</span><span class="tool">JavaScript · plugins<br>API de servicios sociales</span></div>
     </div>
     <div class="rule"></div>
-    <p class="anim" style="max-width:96ch">Es la respuesta a un problema clásico de la informática en el aula: <b>niveles de partida muy dispares</b>. Aquí no se fragmenta el grupo en dos asignaturas ni se deja atrás a nadie; el mismo proyecto admite cuatro profundidades y todas terminan en un producto presentable. Ficha, pág. 25.</p>
-    <div class="foot"><span>Cómo funciona</span><span>05</span></div>
+    <p class="anim" style="max-width:96ch">Es la respuesta a un problema clásico de la informática en el aula: <b>niveles de partida muy dispares</b>. Aquí no se fragmenta el grupo en dos asignaturas ni se deja atrás a nadie; el mismo proyecto admite cuatro profundidades y todos terminan en un producto presentable (Fundación Telefónica, 2014, p. 25).</p>
+    <div class="foot"><span>Cómo funciona</span><span>06</span></div>
   </section>
 
-  <!-- 6 · EL INSTRUMENTO (diana vacía) -->
+  <!-- 7 · EL INSTRUMENTO (diana vacía) -->
   <section class="slide">
     <div class="kicker anim">El instrumento</div>
     <h2 class="anim">Diez indicadores, escala de 0 a 4</h2>
     <div class="two" style="margin-top:6px">
       <div class="stack anim" style="max-width:44ch">
-        <p>Los diez criterios del <em>Decálogo</em> de Fundación Telefónica, sobre el plano. Cada eje se valora de <span class="mono">0</span> (ausencia) a <span class="mono">4</span> (alto).</p>
-        <p class="small">Un proyecto ideal sería una estrella grande. Este análisis no busca eso: busca <b>dónde no llega</b>, que es lo que la diana sirve para ver.</p>
+        <p>Los diez criterios del <em>Decálogo</em> de Fundación Telefónica, sobre el plano. Cada eje se valora de <span class="mono">0</span> (ausencia) a <span class="mono">4</span> (alto). La escala del enunciado traduce esa numeración a cuatro niveles: ausencia, bajo, medio y alto.</p>
+        <p class="small">Una diana en su valor máximo no aporta información útil; lo que orienta la mejora es identificar en qué indicador el proyecto no llega. <a href="https://www.fundaciontelefonica.com/cultura-digital/publicaciones/341/" target="_blank" rel="noopener">Decálogo de un proyecto innovador: guía práctica</a> (Fundación Telefónica, s.f.).</p>
         <div class="card bad" style="margin-top:6px"><div class="tag">Criterio de lectura</div><p>Una diana «punzante» —con un eje hundido— informa mucho más que una diana uniforme.</p></div>
       </div>
-      <div id="diana-6"></div>
+      <div id="diana-6" class="dwrap"></div>
     </div>
-    <div class="foot"><span>El instrumento</span><span>06</span></div>
+    <div class="foot"><span>El instrumento</span><span>07</span></div>
   </section>
 
-  <!-- 7 · BLOQUE 1 -->
+  <!-- 8 · BLOQUE 1 -->
   <section class="slide">
     <div class="kicker anim">Análisis · bloque 1 de 3</div>
     <h2 class="anim">Lo que le ocurre al alumnado</h2>
     <div class="two" style="margin-top:6px">
       <div class="stack anim">
-        <div class="card win"><div class="tag">Experiencia de aprendizaje vital · 3</div><p>El emprendimiento y el bien social sitúan el proyecto más allá de la nota: <em>«tecnología como catalizador para transformar vidas y comunidades»</em> (p. 24).</p></div>
-        <div class="card win"><div class="tag">Aprendizaje auténtico y significativo · 3</div><p>El problema lo eligen ellos y les importa. La organización lo formula como aprendizaje conectado a problemas del mundo real, con contexto y propósito.</p></div>
-        <div class="card win"><div class="tag">Aprendizaje basado en retos · 3</div><p>Reto abierto, de viabilidad no garantizada, con resultado incierto: la condición del aprendizaje basado en retos.</p></div>
-        <div class="card win"><div class="tag">Aprendizaje colaborativo · 3</div><p>Todo el proyecto se construye en equipo, a lo largo de un curso entero. Colaboración de proceso, no actividad puntual.</p></div>
+        <div class="card win"><div class="tag">Experiencia de aprendizaje vital · 3 (alto)</div><p>El emprendimiento y el bien social sitúan el proyecto más allá de la nota: <em>«tecnología como catalizador para transformar vidas y comunidades»</em> (Fundación Telefónica, 2014, p. 24).</p></div>
+        <div class="card win"><div class="tag">Aprendizaje auténtico y significativo · 3 (alto)</div><p>El problema lo eligen ellos y les importa: aprendizaje conectado a problemas reales, con contexto y propósito.</p></div>
+        <div class="card win"><div class="tag">Aprendizaje basado en retos · 3 (alto)</div><p>Reto abierto, de viabilidad no garantizada, con resultado incierto: la condición del aprendizaje basado en retos.</p></div>
+        <div class="card win"><div class="tag">Aprendizaje colaborativo · 3 (alto)</div><p>Todo el proyecto se construye en equipo, de principio a fin.</p></div>
       </div>
-      <div id="diana-7"></div>
+      <div id="diana-7" class="dwrap"></div>
     </div>
-    <div class="foot"><span>Análisis · 1 de 3</span><span>07</span></div>
+    <p class="temp anim">Anclaje en el temario: <b>aprendizaje experiencial</b> · <b>aprendizaje significativo</b> · <b>aprendizaje basado en proyectos y retos</b> · <b>estructuras de aprendizaje cooperativo</b>.</p>
+    <div class="foot"><span>Análisis · 1 de 3</span><span>08</span></div>
   </section>
 
-  <!-- 8 · BLOQUE 2 -->
+  <!-- 9 · BLOQUE 2 -->
   <section class="slide">
     <div class="kicker anim">Análisis · bloque 2 de 3</div>
     <h2 class="anim">Cómo se enseña</h2>
     <div class="two" style="margin-top:6px">
       <div class="stack anim">
-        <div class="card win"><div class="tag">Uso de las TIC · 4</div><p>El punto más fuerte. La tecnología no adorna: es el medio de producción. De los bocetos al código con API, y hoy con IA generativa y programación asistida.</p></div>
-        <div class="card win"><div class="tag">Metodologías activas · 3</div><p>El alumnado elige, propone y construye; el docente orienta. Bajo el 4 porque el material prefabricado sigue marcando bastante el camino.</p></div>
-        <div class="card win"><div class="tag">Aprendizaje C21 · 3</div><p>Resolución de problemas, creatividad, comunicación y trabajo en equipo (p. 25), más alfabetización en IA y pensamiento crítico sobre sesgos.</p></div>
-        <div class="card"><div class="tag">Aprendizaje más allá del aula · 2</div><p>Entran profesionales del sector y hay premios externos, pero el curso se imparte dentro del aula y del horario escolar. <b>Se queda en medio.</b></p></div>
+        <div class="card win"><div class="tag">Uso de las TIC · 4 (alto)</div><p>El punto más fuerte: la tecnología no es accesoria, es el medio de producción (de los bocetos al código con API).</p></div>
+        <div class="card win"><div class="tag">Metodologías activas · 3 (alto)</div><p>El alumnado elige, propone y construye; el docente orienta. Bajo el 4 porque el material prefabricado sigue marcando bastante el camino.</p></div>
+        <div class="card win"><div class="tag">Aprendizaje C21 · 3 (alto)</div><p>Creatividad, comunicación, trabajo en equipo y resolución de problemas (Fundación Telefónica, 2014, p. 25).</p></div>
+        <div class="card"><div class="tag">Aprendizaje más allá del aula · 2 (medio)</div><p>Entran profesionales del sector y hay premios externos, pero el curso se imparte dentro del aula y del horario escolar. <b>Se queda en medio.</b></p></div>
       </div>
-      <div id="diana-8"></div>
+      <div id="diana-8" class="dwrap"></div>
     </div>
-    <div class="foot"><span>Análisis · 2 de 3</span><span>08</span></div>
+    <p class="temp anim">Anclaje en el temario: <b>metodologías activas y rol facilitador del docente</b> · <b>uso crítico de la tecnología</b> · <b>competencias del siglo XXI</b> · <b>aprendizaje más allá del aula</b>.</p>
+    <div class="foot"><span>Análisis · 2 de 3</span><span>09</span></div>
   </section>
 
-  <!-- 9 · BLOQUE 3 (diana completa) -->
+  <!-- 10 · BLOQUE 3 (diana completa) -->
   <section class="slide center">
     <div class="kicker anim">Análisis · bloque 3 de 3</div>
     <h2 class="anim">Qué lo sostiene</h2>
     <div class="two" style="margin-top:6px">
       <div class="stack anim">
-        <div class="card bad"><div class="tag accent">Evaluación · 1</div><p>Es el punto débil y no lo maquillo. Lo que el proyecto documenta son <b>encuestas de percepción</b> y métricas de programa, no instrumentos de evaluación del aprendizaje. No hay rúbrica pública y la calificación queda entera en manos del docente.</p></div>
-        <div class="card"><div class="tag">Sostenibilidad · 3</div><p>Quince años en marcha, 30.444 estudiantes al año, financiación diversificada y un modelo de réplica probado. Bajo a 3 por una fragilidad real, que es la gráfica siguiente.</p></div>
-        <div class="card" style="border-left:3px solid var(--ink)"><div class="tag">Lectura del conjunto</div><p>Nueve ejes altos y uno hundido. El proyecto sabe hacer muchas cosas bien; <b>no sabe demostrar lo que sus alumnos aprenden</b>.</p></div>
+        <div class="card bad"><div class="tag accent">Evaluación · 1 (bajo)</div><p>Es el punto débil y no debe ocultarse. Lo que el proyecto documenta son <b>encuestas de percepción</b> y métricas de programa, no instrumentos de evaluación del aprendizaje. No hay rúbrica pública y la calificación queda entera en manos del docente.</p></div>
+        <div class="card"><div class="tag">Sostenibilidad · 3 (alto)</div><p>Quince años en marcha, 30.444 estudiantes al año y un modelo de réplica probado. Bajo a 3 por una fragilidad real: la gráfica siguiente.</p></div>
+        <div class="card" style="border-left:3px solid var(--ink)"><div class="tag">Lectura del conjunto</div><p>Nueve ejes altos y uno hundido. El proyecto resuelve con solvencia la mayoría de los indicadores; <b>no sabe demostrar lo que sus alumnos aprenden</b>.</p></div>
       </div>
-      <div id="diana-9"></div>
+      <div id="diana-9" class="dwrap"></div>
     </div>
-    <div class="foot"><span>Análisis · 3 de 3</span><span>09</span></div>
+    <p class="temp anim">Anclaje en el temario: <b>finalidades de la evaluación (Santos Guerra, 2024)</b> · <b>tríada autoevaluación, coevaluación y heteroevaluación</b> · <b>sostenibilidad y transferencia de la innovación</b>.</p>
+    <div class="foot"><span>Análisis · 3 de 3</span><span>10</span></div>
   </section>
 
-  <!-- 10 · EL VACÍO -->
+  <!-- 11 · EL VACÍO -->
   <section class="slide">
     <div class="kicker anim">El hallazgo</div>
     <h2 class="anim">Lo que el proyecto mide · y lo que no mide</h2>
@@ -437,19 +475,19 @@
         </div>
       </div>
     </div>
-    <div class="foot"><span>El hallazgo</span><span>10</span></div>
+    <div class="foot"><span>El hallazgo</span><span>11</span></div>
   </section>
 
-  <!-- 11 · SOSTENIBILIDAD -->
+  <!-- 12 · SOSTENIBILIDAD -->
   <section class="slide center">
     <div class="kicker anim">Sostenibilidad</div>
     <h2 class="anim">Crece el alcance, se retiran los productos</h2>
     <div style="margin-top:8px;height:418px" class="anim"><svg id="curvas" class="chart" viewBox="0 0 1120 430" preserveAspectRatio="xMidYMid meet"></svg></div>
     <p class="small anim" style="margin-top:6px">Cada serie tiene su propia escala, señalada en su eje. El punto de septiembre de 2014 es la <b>previsión</b> que recogía la ficha, no un resultado medido.</p>
-    <div class="foot"><span>Sostenibilidad</span><span>11</span></div>
+    <div class="foot"><span>Sostenibilidad</span><span>12</span></div>
   </section>
 
-  <!-- 12 · REFLEXIÓN -->
+  <!-- 13 · REFLEXIÓN -->
   <section class="slide center">
     <div class="kicker anim">Reflexión</div>
     <h2 class="anim">Qué me llevo, qué me frenaría y cómo lo resolvería</h2>
@@ -478,19 +516,23 @@
       <div><div class="num">02</div><p style="font-size:14.5px"><b>Cerrar el hueco:</b> diseñar mi propia rúbrica y diana de autoevaluación; convierto la debilidad del proyecto en mi punto fuerte.</p></div>
       <div><div class="num">03</div><p style="font-size:14.5px"><b>Mentores de la comunidad</b> —familias, antiguos alumnos, FP del entorno, voluntariado en línea— en lugar de depender de una gran empresa.</p></div>
     </div>
-    <div class="foot"><span>Reflexión</span><span>12</span></div>
+    <p class="temp anim">La propuesta se alinea con la <b>LOMLOE</b> (saberes de Tecnología y Digitalización en ESO), el <b>aprendizaje basado en proyectos</b> y la <b>tríada autoevaluación, coevaluación y heteroevaluación</b> trabajada en el temario.</p>
+    <div class="foot"><span>Reflexión</span><span>13</span></div>
   </section>
 
-  <!-- 13 · REFERENCIAS -->
+  <!-- 14 · REFERENCIAS -->
   <section class="slide">
     <div class="kicker anim">Cierre</div>
     <h2 class="anim">Referencias y fuentes</h2>
     <div class="two" style="margin-top:20px;height:auto;align-items:start">
       <ul class="refs anim">
-        <li>Apps for Good. (2026). <em>Apps for Good</em>. <a href="https://www.appsforgood.org/" target="_blank" rel="noopener">https://www.appsforgood.org/</a></li>
-        <li>Apps for Good. (2026). <em>Our course: AI for Good 2.0</em>. <a href="https://www.appsforgood.org/our-course" target="_blank" rel="noopener">https://www.appsforgood.org/our-course</a></li>
-        <li>Apps for Good. (2026). <em>Impact: Our 2025/26 impact journey</em>. <a href="https://www.appsforgood.org/impact" target="_blank" rel="noopener">https://www.appsforgood.org/impact</a></li>
-        <li>Fundación Telefónica. (2014). <em>Top 100 innovaciones educativas: 100 proyectos eficaces para fomentar las vocaciones científico-tecnológicas (STEM)</em>. Fundación Telefónica. <a href="https://www.fundaciontelefonica.com/cultura-digital/publicaciones/341/" target="_blank" rel="noopener">https://www.fundaciontelefonica.com/cultura-digital/publicaciones/341/</a></li>
+        <li>Apps for Good. (s.f.). <em>Apps for Good</em> [página web]. Recuperado el 4 de octubre de 2026, de <a href="https://www.appsforgood.org/" target="_blank" rel="noopener">https://www.appsforgood.org/</a></li>
+        <li>Apps for Good. (s.f.). <em>Our course: AI for Good 2.0</em>. Recuperado el 4 de octubre de 2026, de <a href="https://www.appsforgood.org/our-course" target="_blank" rel="noopener">https://www.appsforgood.org/our-course</a></li>
+        <li>Apps for Good. (s.f.). <em>Impact: Our 2025/26 impact journey</em>. Recuperado el 4 de octubre de 2026, de <a href="https://www.appsforgood.org/impact" target="_blank" rel="noopener">https://www.appsforgood.org/impact</a></li>
+        <li>Fundación Telefónica. (2014). <em>Top 100 innovaciones educativas: 100 proyectos eficaces para fomentar las vocaciones científico-tecnológicas (STEM)</em>. Fundación Telefónica.</li>
+        <li>Fundación Telefónica. (s.f.). <em>Decálogo de un proyecto innovador: guía práctica</em>. Recuperado el 4 de octubre de 2026, de <a href="https://www.fundaciontelefonica.com/cultura-digital/publicaciones/341/" target="_blank" rel="noopener">https://www.fundaciontelefonica.com/cultura-digital/publicaciones/341/</a></li>
+        <li>Santos Guerra, M. Á. (2024). <em>Qué hacemos con el cuchillo: finalidades de la evaluación</em> [material de la asignatura]. Universidad Internacional de La Rioja.</li>
+        <li>Universidad Internacional de La Rioja. (s.f.). <em>Diana de evaluación de proyectos de innovación</em> [plantilla de la actividad]. Aula virtual de la asignatura.</li>
       </ul>
       <div class="stack anim">
         <div class="card"><div class="tag">Análisis · ficha del Top 100</div><p>Páginas 23 a 26. Las citas del análisis se referencian por página de esa ficha.</p></div>
@@ -498,7 +540,7 @@
         <div class="card"><div class="tag">Instrumento</div><p>Los diez indicadores y la diana proceden de la plantilla oficial de la actividad, basada en el <em>Decálogo</em> de Fundación Telefónica.</p></div>
       </div>
     </div>
-    <div class="foot"><span>Apps for Good · evaluación con el Decálogo</span><span>13</span></div>
+    <div class="foot"><span>Apps for Good · evaluación con el Decálogo</span><span>14</span></div>
   </section>
 
 </div></main>
@@ -533,7 +575,7 @@ const NS="http://www.w3.org/2000/svg";
 function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
 
 function drawDiana(mount, visible){
-  const W=660,H=620,cx=W/2,cy=H/2,R=200,MAX=4;
+  const W=660,H=480,cx=W/2,cy=H/2,R=200,MAX=4;
   const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,width:"100%",height:"100%"});
   const ang=i=>(-90+i*36)*Math.PI/180;
 
@@ -656,6 +698,8 @@ function drawCurvas(){
 const slides=[...document.querySelectorAll(".slide")];
 const NOMBRE="Pablo Caro Revuelta";
 document.querySelectorAll(".foot span:first-child").forEach(s=>{s.textContent=NOMBRE+" · "+s.textContent;});
+// la numeración se calcula del orden real de las diapositivas, para que insertar una no descuadre el resto
+document.querySelectorAll(".slide").forEach((s,i)=>{const f=s.querySelector(".foot");if(f)f.lastElementChild.textContent=String(i+1).padStart(2,"0");});
 const total=slides.length; let i=0;
 document.getElementById("tot").textContent=total;
 drawCurvas();
