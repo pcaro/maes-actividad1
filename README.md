@@ -34,6 +34,14 @@ Como apoyo puntual, la **escalera de los cuatro niveles de prototipado** (de los
 
 Sin paso de compilación ni dependencias: un HTML con el CSS y el SVG en línea, servido directamente por GitHub Pages. Se versiona tal cual se publica, sin `node_modules` ni CI de por medio.
 
+### Ver en local
+
+```bash
+python3 -m http.server 8080   # y abrir http://localhost:8080
+```
+
+También funciona abriendo el fichero directamente (`file://`); el servidor solo hace falta para que la URL se parezca a la publicada. Se navega con las flechas izquierda y derecha, y el botón *exportar a PDF* usa el diálogo de impresión del navegador (una diapositiva por página, en apaisado).
+
 ## Publicación
 
 GitHub Pages **no está habilitado todavía**: en el plan actual (Free), Pages no admite repositorios privados.

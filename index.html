@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Apps for Good · Actividad 1 · Innovación docente (MAES)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#f4f1ea; --paper-2:#ece7dc; --ink:#16150f; --ink-soft:#5b574a;
+    --line:#d8d1c1; --line-strong:#b9b0a0;
+    --accent:#c8452c; --accent-soft:#f0d9d2;
+    --data:#2f5d8a; --data-soft:#d8e2ec;
+    --w:1240px; --h:698px;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+    --sans:"IBM Plex Sans",system-ui,sans-serif;
+    --serif:"Fraunces",Georgia,serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.32;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/><feColorMatrix type='saturate' values='0'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='.42'/></svg>")}
+
+  /* ---------- marco y navegación ---------- */
+  .deck{min-height:100vh;display:grid;place-items:center;padding:28px 20px 76px}
+  .stage{width:min(var(--w),94vw);aspect-ratio:1240/698;position:relative}
+  .slide{position:absolute;inset:0;background:var(--paper);overflow:hidden;
+    padding:52px 62px;display:none;grid-template-columns:1fr;align-content:start;
+    box-shadow:0 18px 50px rgba(0,0,0,.42)}
+  .slide.on{display:grid}
+  .slide.center{align-content:center}
+  .slide.on .anim{animation:rise .62s cubic-bezier(.2,.7,.2,1) both}
+  .slide.on .anim:nth-child(1){animation-delay:.02s}
+  .slide.on .anim:nth-child(2){animation-delay:.10s}
+  .slide.on .anim:nth-child(3){animation-delay:.18s}
+  .slide.on .anim:nth-child(4){animation-delay:.26s}
+  .slide.on .anim:nth-child(5){animation-delay:.34s}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+  .bar{position:fixed;left:0;right:0;bottom:0;height:60px;display:flex;align-items:center;gap:16px;
+    padding:0 22px;background:rgba(22,21,15,.92);color:#e8e3d6;backdrop-filter:blur(6px);z-index:100}
+  .bar button{font:500 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;
+    background:transparent;color:#e8e3d6;border:1px solid #3d3a30;padding:9px 14px;border-radius:2px}
+  .bar button:hover:not(:disabled){background:#2c2a22;border-color:#5f5a4a}
+  .bar button:disabled{opacity:.34;cursor:not-allowed}
+  .bar .count{font:500 13px var(--mono);color:#9c9585;margin-inline:auto}
+  .bar .hint{font:400 12px var(--mono);color:#7d7767}
+  .pbar{position:fixed;top:0;left:0;height:3px;background:var(--accent);z-index:101;transition:width .4s}
+
+  /* ---------- tipografía ---------- */
+  .kicker{font:500 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+  h1{font:600 clamp(38px,4.6vw,64px)/1.02 var(--serif);margin:14px 0 0;letter-spacing:-.02em}
+  h2{font:600 clamp(26px,2.5vw,36px)/1.1 var(--serif);margin:8px 0 0;letter-spacing:-.01em}
+  h3{font:600 15px/1.3 var(--sans);margin:0 0 6px}
+  p{margin:0;font-size:16.5px;line-height:1.55;color:#2e2c24}
+  .lede{font-size:19px;line-height:1.5;color:#3a372e;max-width:62ch}
+  .mono{font-family:var(--mono)}
+  .accent{color:var(--accent)}
+  .data-c{color:var(--data)}
+  .small{font-size:13.5px;color:var(--ink-soft)}
+  .rule{height:1px;background:var(--line);margin:18px 0}
+  .num{font:600 13px var(--mono);color:var(--accent)}
+
+  /* ---------- portada ---------- */
+  .cover{display:grid;align-content:center;height:100%;position:relative}
+  .cover:before{content:"";position:absolute;right:-140px;top:-120px;width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(circle at 35% 35%,var(--accent-soft),transparent 62%);opacity:.9}
+  .cover .meta{margin-top:26px;display:flex;gap:26px;flex-wrap:wrap;font:13px var(--mono);color:var(--ink-soft)}
+  .cover .meta b{color:var(--ink);font-weight:600}
+
+  /* ---------- utilidades de rejilla ---------- */
+  .two{display:grid;grid-template-columns:1.02fr .98fr;gap:44px;align-items:center;height:100%}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .stack{display:grid;gap:14px}
+
+  /* ---------- tarjetas ---------- */
+  .card{border:1px solid var(--line);background:#fbf9f4;padding:18px 18px 16px;border-radius:2px}
+  .card .tag{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+  .card p{font-size:15px;line-height:1.5;margin-top:6px;color:#3a372e}
+  .card.win{border-left:3px solid var(--data)}
+  .card.bad{border-left:3px solid var(--accent);background:#fdf4f1}
+
+  /* ---------- pasos (cómo funciona) ---------- */
+  ol.steps{list-style:none;margin:0;padding:0;display:grid;gap:11px;counter-reset:s}
+  ol.steps li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:baseline}
+  ol.steps li:before{content:counter(s,decimal-leading-zero);font:600 12px var(--mono);color:var(--accent);padding-top:3px}
+  ol.steps b{font-weight:600;font-size:15.5px}
+  ol.steps span{color:var(--ink-soft);font-size:14.5px}
+
+  /* ---------- escalera de prototipado ---------- */
+  .stairs{display:flex;align-items:flex-end;gap:14px;height:250px;margin-top:8px}
+  .step{flex:1;background:#fbf9f4;border:1px solid var(--line);border-bottom:3px solid var(--data);
+    padding:12px 12px 10px;display:grid;align-content:end;gap:5px}
+  .step:nth-child(1){height:38%}.step:nth-child(2){height:58%}.step:nth-child(3){height:78%}.step:nth-child(4){height:98%}
+  .step .lv{font:600 11px var(--mono);letter-spacing:.1em;color:var(--data)}
+  .step .tt{font:600 14px var(--sans);line-height:1.25}
+  .step .tool{font:400 11.5px/1.35 var(--mono);color:var(--ink-soft)}
+
+  /* ---------- gráfico del vacío ---------- */
+  .gap{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);background:#fbf9f4;height:100%}
+  .gap .col{padding:20px 22px}
+  .gap .col+.col{border-left:1px solid var(--line);background:#fdf4f1}
+  .gap h3{font:500 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px}
+  .gap ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+  .gap li{font-size:14.5px;line-height:1.35;display:grid;grid-template-columns:16px 1fr;gap:9px;align-items:start}
+  .gap .yes li:before{content:"";width:9px;height:9px;margin-top:5px;background:var(--data);border-radius:50%}
+  .gap .no li:before{content:"";width:11px;height:11px;margin-top:4px;border:1.5px dashed var(--accent);border-radius:50%}
+  .gap .no li{color:#7a6a63}
+  .gap .verdict{margin-top:16px;font:500 13px var(--mono);color:var(--accent)}
+
+  /* ---------- chart contenedor ---------- */
+  .chart{width:100%;height:100%}
+  svg text{font-family:var(--mono)}
+  .axis-name{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase}
+  .forecast{stroke-dasharray:6 5}
+
+  /* ---------- reflexión ---------- */
+  .refl{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+  .refl .box{border-top:2px solid var(--ink);padding-top:12px}
+  .refl .box.b{border-top-color:var(--accent)}
+  .refl h3{font:600 16px var(--serif);margin-bottom:8px}
+  .refl li{font-size:14.5px;line-height:1.45;margin-bottom:7px}
+
+  /* ---------- referencias ---------- */
+  .refs li{font-size:14.5px;line-height:1.5;margin-bottom:9px}
+  .refs{list-style:none;padding:0;margin:0}
+
+  /* ---------- pie ---------- */
+  .foot{position:absolute;left:62px;right:62px;bottom:22px;display:flex;justify-content:space-between;
+    font:400 11.5px var(--mono);color:var(--ink-soft);border-top:1px solid var(--line);padding-top:9px}
+
+  @media print{
+    @page{size:A4 landscape;margin:0}
+    html,body{background:#fff}
+    .bar,.pbar{display:none}
+    .deck{padding:0;display:block}
+    .stage{width:100%;aspect-ratio:auto;height:auto}
+    .slide{position:static;display:grid!important;width:100%;height:100vh;box-shadow:none;break-after:page;padding:40px 46px}
+    body::after{display:none}
+    .slide .anim{animation:none!important;opacity:1!important;transform:none!important}
+  }
+</style>
+</head>
+<body>
+<div class="pbar" id="pbar"></div>
+
+<main class="deck"><div class="stage" id="stage">
+
+  <!-- 1 · PORTADA -->
+  <section class="slide on">
+    <div class="cover">
+      <div class="kicker anim">Actividad 1 · Innovación docente e Iniciación a la Investigación Educativa</div>
+      <h1 class="anim">Apps for Good</h1>
+      <p class="lede anim" style="margin-top:20px;max-width:56ch">Evaluación de la calidad del proyecto con el <em>Decálogo de un Proyecto Innovador</em> de Fundación Telefónica: diez indicadores, una escala de 0 a 4 y una conclusión incómoda.</p>
+      <div class="meta anim">
+        <span>MAES · <b>Tecnología e Informática</b></span>
+        <span>Fundación Telefónica, <b>Top 100 Innovaciones Educativas</b> (2014)</span>
+        <span>Entrega <b>19/10/2026</b></span>
+      </div>
+    </div>
+    <div class="foot"><span>Apps for Good · análisis con el Decálogo</span><span>01</span></div>
+  </section>
+
+  <!-- 2 · EL PROYECTO EN 30 SEGUNDOS -->
+  <section class="slide">
+    <div class="kicker anim">El proyecto</div>
+    <h2 class="anim">Un movimiento que convierte el aula en un estudio de producto</h2>
+    <div class="two" style="margin-top:18px;height:auto">
+      <div class="stack anim">
+        <p>Nació en Londres en <b>2010</b>. Los estudiantes, por equipos y durante un curso escolar, eligen un problema real de su entorno y diseñan, prototipan y presentan una aplicación móvil o web que lo resuelva.</p>
+        <p>No enseña programación como contenido aislado, sino dentro del proceso completo de creación de un producto: idea, viabilidad técnica, desarrollo, modelo de negocio y comunicación.</p>
+        <p class="small">Hoy es una ONG educativa británica (Registered Charity 1133656), <b>gratuita para los centros</b>, articulada en torno al curso <em>AI for Good 2.0</em>.</p>
+      </div>
+      <div class="stack anim">
+        <div class="three" style="grid-template-columns:1fr 1fr;gap:18px">
+          <div class="card"><div class="tag">Alcance</div><p><b class="mono" style="font-size:22px">30.444</b><br>estudiantes al año</p></div>
+          <div class="card"><div class="tag">Edad hoy</div><p><b class="mono" style="font-size:22px">11-14</b><br>1.º y 2.º de ESO (KS3)</p></div>
+          <div class="card"><div class="tag">Ficha 2014</div><p><b class="mono" style="font-size:22px">10-18</b><br>toda la secundaria</p></div>
+          <div class="card"><div class="tag">Coste</div><p><b class="mono" style="font-size:22px">0 €</b><br>para el centro</p></div>
+        </div>
+        <p class="small">El contraste entre los dos recuadros del centro no es un detalle: el proyecto ha <b>estrechado su franja de edad</b> desde la ficha de 2014.</p>
+      </div>
+    </div>
+    <div class="foot"><span>El proyecto</span><span>02</span></div>
+  </section>
+
+  <!-- 3 · LA NECESIDAD -->
+  <section class="slide">
+    <div class="kicker anim">La necesidad a la que responde</div>
+    <h2 class="anim">Los sistemas educativos están perdiendo talento</h2>
+    <div class="two" style="margin-top:20px;height:auto">
+      <div class="stack anim">
+        <blockquote style="margin:0;border-left:3px solid var(--accent);padding:4px 0 4px 20px;font:italic 400 19px/1.5 var(--serif);color:#26241d">
+          «La tecnología estimula la imaginación de los jóvenes, que quieren utilizarla para crear, jugar y compartir. Sin embargo, la escuela tradicional está muy rezagada, perdiendo la oportunidad de participar y aprovechar la tecnología para generar ricas experiencias de aprendizaje, especialmente para aquellos estudiantes más desencantados con los métodos tradicionales.»
+        </blockquote>
+        <p class="small">Ficha del proyecto, pág. 24</p>
+      </div>
+      <div class="stack anim">
+        <div class="card"><div class="tag">Diagnóstico 1</div><p>La escuela no prepara para el mundo real, dominado por los continuos avances tecnológicos.</p></div>
+        <div class="card"><div class="tag">Diagnóstico 2</div><p>La tecnología escolar no se conecta con desafíos y problemas reales, y pierde relevancia ante el alumnado.</p></div>
+        <div class="card"><div class="tag">Diagnóstico 3</div><p>El profesorado, consciente del potencial, se siente frustrado por no poder hacer más.</p></div>
+      </div>
+    </div>
+    <div class="foot"><span>La necesidad</span><span>03</span></div>
+  </section>
+
+  <!-- 4 · CÓMO FUNCIONA -->
+  <section class="slide">
+    <div class="kicker anim">Cómo funciona</div>
+    <h2 class="anim">El proceso completo de un producto, de principio a fin</h2>
+    <div class="two" style="margin-top:16px;height:auto">
+      <ol class="steps anim">
+        <li><span><b>El equipo elige el problema.</b> <span>Un problema real que les preocupa; el punto de partida lo pone el alumnado, no el temario.</span></span></li>
+        <li><span><b>Generación de ideas.</b> <span>Propuestas de solución y análisis de su viabilidad técnica.</span></span></li>
+        <li><span><b>Prototipado por niveles.</b> <span>Cada estudiante entra por el nivel que puede sostener; el producto crece.</span></span></li>
+        <li><span><b>Mentoría de profesionales.</b> <span>Voluntarios del sector tecnológico acompañan al equipo en sesiones de una hora, presenciales o por videoconferencia.</span></span></li>
+        <li><span><b>Pitch y competición.</b> <span>Los mejores equipos presentan su producto en los premios nacionales.</span></span></li>
+      </ol>
+      <div class="stack anim">
+        <div class="card win"><div class="tag">Lo que sostiene el modelo</div><p>El docente recibe contenido y formación ya elaborados, y el programa le trae la red de profesionales. Dos de las barreras clásicas del aula —el material y la conexión con el mundo profesional— las resuelve la organización.</p></div>
+        <div class="card"><div class="tag">Lo que exige del centro</div><p>Dispositivos para trabajo por equipos, tiempo real de aula y un docente dispuesto a ceder el control del temario al alumnado.</p></div>
+      </div>
+    </div>
+    <div class="foot"><span>Cómo funciona</span><span>04</span></div>
+  </section>
+
+  <!-- 5 · ESCALERA DE PROTOTIPADO -->
+  <section class="slide">
+    <div class="kicker anim">La mejor idea del proyecto</div>
+    <h2 class="anim">Cuatro niveles de prototipado, una sola clase</h2>
+    <div class="stairs anim">
+      <div class="step"><span class="lv">NIVEL 1 · BÁSICO</span><span class="tt">Bocetos</span><span class="tool">wireframes<br>Balsamiq · POP</span></div>
+      <div class="step"><span class="lv">NIVEL 2 · BLOQUES</span><span class="tt">Programación por bloques</span><span class="tool">App Inventor 1 y 2<br>AppShed</span></div>
+      <div class="step"><span class="lv">NIVEL 3 · WEB</span><span class="tt">Código de verdad</span><span class="tool">Blockly → JavaScript<br>HTML + CSS · JSBin</span></div>
+      <div class="step"><span class="lv">NIVEL 4 · SOCIAL</span><span class="tt">Producto conectado</span><span class="tool">JavaScript · plugins<br>API de servicios sociales</span></div>
+    </div>
+    <div class="rule"></div>
+    <p class="anim" style="max-width:96ch">Es la respuesta a un problema clásico de la informática en el aula: <b>niveles de partida muy dispares</b>. Aquí no se fragmenta el grupo en dos asignaturas ni se deja atrás a nadie; el mismo proyecto admite cuatro profundidades y todas terminan en un producto presentable. Ficha, pág. 25.</p>
+    <div class="foot"><span>Cómo funciona</span><span>05</span></div>
+  </section>
+
+  <!-- 6 · EL INSTRUMENTO (diana vacía) -->
+  <section class="slide">
+    <div class="kicker anim">El instrumento</div>
+    <h2 class="anim">Diez indicadores, escala de 0 a 4</h2>
+    <div class="two" style="margin-top:6px">
+      <div class="stack anim" style="max-width:44ch">
+        <p>Los diez criterios del <em>Decálogo</em> de Fundación Telefónica, sobre el plano. Cada eje se valora de <span class="mono">0</span> (ausencia) a <span class="mono">4</span> (alto).</p>
+        <p class="small">Un proyecto ideal sería una estrella grande. Este análisis no busca eso: busca <b>dónde no llega</b>, que es lo que la diana sirve para ver.</p>
+        <div class="card bad" style="margin-top:6px"><div class="tag">Criterio de lectura</div><p>Una diana «punzante» —con un eje hundido— informa mucho más que una diana uniforme.</p></div>
+      </div>
+      <div id="diana-6"></div>
+    </div>
+    <div class="foot"><span>El instrumento</span><span>06</span></div>
+  </section>
+
+  <!-- 7 · BLOQUE 1 -->
+  <section class="slide">
+    <div class="kicker anim">Análisis · bloque 1 de 3</div>
+    <h2 class="anim">Lo que le ocurre al alumnado</h2>
+    <div class="two" style="margin-top:6px">
+      <div class="stack anim">
+        <div class="card win"><div class="tag">Experiencia de aprendizaje vital · 3</div><p>El emprendimiento y el bien social sitúan el proyecto más allá de la nota: <em>«tecnología como catalizador para transformar vidas y comunidades»</em> (p. 24).</p></div>
+        <div class="card win"><div class="tag">Aprendizaje auténtico y significativo · 3</div><p>El problema lo eligen ellos y les importa. La organización lo formula como aprendizaje conectado a problemas del mundo real, con contexto y propósito.</p></div>
+        <div class="card win"><div class="tag">Aprendizaje basado en retos · 3</div><p>Reto abierto, de viabilidad no garantizada, con resultado incierto: la condición del aprendizaje basado en retos.</p></div>
+        <div class="card win"><div class="tag">Aprendizaje colaborativo · 3</div><p>Todo el proyecto se construye en equipo, a lo largo de un curso entero. Colaboración de proceso, no actividad puntual.</p></div>
+      </div>
+      <div id="diana-7"></div>
+    </div>
+    <div class="foot"><span>Análisis · 1 de 3</span><span>07</span></div>
+  </section>
+
+  <!-- 8 · BLOQUE 2 -->
+  <section class="slide">
+    <div class="kicker anim">Análisis · bloque 2 de 3</div>
+    <h2 class="anim">Cómo se enseña</h2>
+    <div class="two" style="margin-top:6px">
+      <div class="stack anim">
+        <div class="card win"><div class="tag">Uso de las TIC · 4</div><p>El punto más fuerte. La tecnología no adorna: es el medio de producción. De los bocetos al código con API, y hoy con IA generativa y programación asistida.</p></div>
+        <div class="card win"><div class="tag">Metodologías activas · 3</div><p>El alumnado elige, propone y construye; el docente orienta. Bajo el 4 porque el material prefabricado sigue marcando bastante el camino.</p></div>
+        <div class="card win"><div class="tag">Aprendizaje C21 · 3</div><p>Resolución de problemas, creatividad, comunicación y trabajo en equipo (p. 25), más alfabetización en IA y pensamiento crítico sobre sesgos.</p></div>
+        <div class="card"><div class="tag">Aprendizaje más allá del aula · 2</div><p>Entran profesionales del sector y hay premios externos, pero el curso se imparte dentro del aula y del horario escolar. <b>Se queda en medio.</b></p></div>
+      </div>
+      <div id="diana-8"></div>
+    </div>
+    <div class="foot"><span>Análisis · 2 de 3</span><span>08</span></div>
+  </section>
+
+  <!-- 9 · BLOQUE 3 (diana completa) -->
+  <section class="slide center">
+    <div class="kicker anim">Análisis · bloque 3 de 3</div>
+    <h2 class="anim">Qué lo sostiene</h2>
+    <div class="two" style="margin-top:6px">
+      <div class="stack anim">
+        <div class="card bad"><div class="tag accent">Evaluación · 1</div><p>Es el punto débil y no lo maquillo. Lo que el proyecto documenta son <b>encuestas de percepción</b> y métricas de programa, no instrumentos de evaluación del aprendizaje. No hay rúbrica pública y la calificación queda entera en manos del docente.</p></div>
+        <div class="card"><div class="tag">Sostenibilidad · 3</div><p>Quince años en marcha, 30.444 estudiantes al año, financiación diversificada y un modelo de réplica probado. Bajo a 3 por una fragilidad real, que es la gráfica siguiente.</p></div>
+        <div class="card" style="border-left:3px solid var(--ink)"><div class="tag">Lectura del conjunto</div><p>Nueve ejes altos y uno hundido. El proyecto sabe hacer muchas cosas bien; <b>no sabe demostrar lo que sus alumnos aprenden</b>.</p></div>
+      </div>
+      <div id="diana-9"></div>
+    </div>
+    <div class="foot"><span>Análisis · 3 de 3</span><span>09</span></div>
+  </section>
+
+  <!-- 10 · EL VACÍO -->
+  <section class="slide">
+    <div class="kicker anim">El hallazgo</div>
+    <h2 class="anim">Lo que el proyecto mide · y lo que no mide</h2>
+    <div style="margin-top:16px;height:392px" class="anim">
+      <div class="gap">
+        <div class="col">
+          <h3>Documentado y publicado</h3>
+          <ul class="yes">
+            <li>Encuestas de percepción a estudiantes y profesorado</li>
+            <li>Número de equipos, voluntarios y revisiones en el <em>Showcase</em></li>
+            <li>Autodeclaración de confianza en habilidades informáticas</li>
+            <li>Evaluación externa (Institute for Employment Studies) de un curso anterior</li>
+            <li>Memoria de impacto anual y teoría del cambio</li>
+          </ul>
+          <div class="verdict">→ Muchos datos. Todos de proceso o de opinión.</div>
+        </div>
+        <div class="col">
+          <h3>Ausente</h3>
+          <ul class="no">
+            <li>Rúbrica de aprendizaje del alumnado</li>
+            <li>Instrumentos de evaluación de las competencias curriculares</li>
+            <li>Evidencias de aprendizaje comparables entre centros</li>
+          </ul>
+          <div class="verdict">→ El hueco del eje 8. Y lo sabe: su informe habla de «evolucionar el enfoque para medir el impacto».</div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>El hallazgo</span><span>10</span></div>
+  </section>
+
+  <!-- 11 · SOSTENIBILIDAD -->
+  <section class="slide center">
+    <div class="kicker anim">Sostenibilidad</div>
+    <h2 class="anim">Crece el alcance, se retiran los productos</h2>
+    <div style="margin-top:8px;height:418px" class="anim"><svg id="curvas" class="chart" viewBox="0 0 1120 430" preserveAspectRatio="xMidYMid meet"></svg></div>
+    <p class="small anim" style="margin-top:6px">Cada serie tiene su propia escala, señalada en su eje. El punto de septiembre de 2014 es la <b>previsión</b> que recogía la ficha, no un resultado medido.</p>
+    <div class="foot"><span>Sostenibilidad</span><span>11</span></div>
+  </section>
+
+  <!-- 12 · REFLEXIÓN -->
+  <section class="slide center">
+    <div class="kicker anim">Reflexión</div>
+    <h2 class="anim">Qué me llevo, qué me frenaría y cómo lo resolvería</h2>
+    <div class="refl anim" style="margin-top:22px">
+      <div class="box">
+        <h3>Lo que aplicaría mañana</h3>
+        <ul style="padding-left:18px;margin:0">
+          <li><b>El problema antes que la herramienta.</b> Que el alumnado elija qué quiere resolver y después aprenda el código que haga falta.</li>
+          <li><b>Los niveles como respuesta a la diversidad:</b> un mismo proyecto con cuatro profundidades posibles.</li>
+          <li><b>Alguien de fuera dando retroalimentación a mitad de camino</b> convierte la tarea en una propuesta de verdad.</li>
+        </ul>
+      </div>
+      <div class="box b">
+        <h3>Lo que me frenaría</h3>
+        <ul style="padding-left:18px;margin:0">
+          <li>Material pensado para el currículo británico, en inglés y hoy orientado a 11-14 años.</li>
+          <li><b>Su propio agujero:</b> si adopto el proyecto, heredo la falta de evaluación y tengo que diseñarla yo.</li>
+          <li>Dispositivos, conexión, tiempo de aula y una red de mentores que no se improvisa.</li>
+          <li>Protección de datos y uso aceptable de IA con menores.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rule"></div>
+    <div class="three anim" style="gap:22px">
+      <div><div class="num">01</div><p style="font-size:14.5px"><b>Adaptar, no adoptar:</b> quedarme con el esqueleto metodológico y construir los materiales contra los saberes de la LOMLOE.</p></div>
+      <div><div class="num">02</div><p style="font-size:14.5px"><b>Cerrar el hueco:</b> diseñar mi propia rúbrica y diana de autoevaluación; convierto la debilidad del proyecto en mi punto fuerte.</p></div>
+      <div><div class="num">03</div><p style="font-size:14.5px"><b>Mentores de la comunidad</b> —familias, antiguos alumnos, FP del entorno, voluntariado en línea— en lugar de depender de una gran empresa.</p></div>
+    </div>
+    <div class="foot"><span>Reflexión</span><span>12</span></div>
+  </section>
+
+  <!-- 13 · REFERENCIAS -->
+  <section class="slide">
+    <div class="kicker anim">Cierre</div>
+    <h2 class="anim">Referencias y fuentes</h2>
+    <div class="two" style="margin-top:20px;height:auto;align-items:start">
+      <ul class="refs anim">
+        <li>Fundación Telefónica. (2014). <em>Top 100 innovaciones educativas: 100 proyectos eficaces para fomentar las vocaciones científico-tecnológicas (STEM)</em>. Fundación Telefónica.</li>
+        <li>Apps for Good. (2026). <em>Our course: AI for Good 2.0</em>. https://www.appsforgood.org/our-course</li>
+        <li>Apps for Good. (2026). <em>Impact: Our 2025/26 impact journey</em>. https://www.appsforgood.org/impact</li>
+      </ul>
+      <div class="stack anim">
+        <div class="card"><div class="tag">Análisis · ficha del Top 100</div><p>Páginas 23 a 26. Las citas del análisis se referencian por página de esa ficha.</p></div>
+        <div class="card"><div class="tag">Análisis · actualización</div><p>Consultada la web oficial el 04/10/2026 para contrastar la franja de edad actual, el curso vigente y los datos de impacto recientes.</p></div>
+        <div class="card"><div class="tag">Instrumento</div><p>Los diez indicadores y la diana proceden de la plantilla oficial de la actividad, basada en el <em>Decálogo</em> de Fundación Telefónica.</p></div>
+      </div>
+    </div>
+    <div class="foot"><span>Apps for Good · evaluación con el Decálogo</span><span>13</span></div>
+  </section>
+
+</div></main>
+
+<nav class="bar">
+  <button id="prev" aria-label="Anterior">← antr</button>
+  <button id="next" aria-label="Siguiente">sig →</button>
+  <span class="count"><span id="cur">1</span> / <span id="tot">13</span></span>
+  <button id="print">exportar a PDF</button>
+  <span class="hint">← → o espacio para navegar</span>
+</nav>
+
+<script>
+/* ============================================================
+   Diana de 10 ejes: barra radial por indicador, escala 0-4.
+   Se pinta por bloques (stages) para que la diana se construya
+   delante del espectador y el eje hundido aparezca al final.
+   ============================================================ */
+const IND = [
+  {n:"aprendizaje vital",        s:"vital",         v:3},
+  {n:"metodologías activas",     s:"metodologías",   v:3},
+  {n:"más allá del aula",        s:"más allá",       v:2},
+  {n:"aprendizaje colaborativo", s:"colaborativo",  v:3},
+  {n:"aprendizaje C21",          s:"C21",           v:3},
+  {n:"auténtico y significativo",s:"auténtico",     v:3},
+  {n:"basado en retos",          s:"retos",         v:3},
+  {n:"evaluación",               s:"evaluación",    v:1},
+  {n:"uso de las TIC",           s:"TIC",           v:4},
+  {n:"sostenibilidad",           s:"sostenibilidad",v:3}
+];
+const NS="http://www.w3.org/2000/svg";
+function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
+
+function drawDiana(mount, visible){
+  const W=660,H=620,cx=W/2,cy=H/2,R=200,MAX=4;
+  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,width:"100%",height:"100%"});
+  const ang=i=>(-90+i*36)*Math.PI/180;
+
+  // anillos
+  for(let r=1;r<=MAX;r++){
+    svg.appendChild(el("circle",{cx,cy,r:R*r/MAX,fill:"none",stroke:"#d8d1c1","stroke-width":r===MAX?1.2:1,
+      "stroke-dasharray":r===MAX?"none":"3 4"}));
+  }
+  svg.appendChild(el("circle",{cx,cy,r:2.5,fill:"#16150f"}));
+
+  IND.forEach((d,i)=>{
+    const a=ang(i), x2=cx+Math.cos(a)*R, y2=cy+Math.sin(a)*R;
+    svg.appendChild(el("line",{x1:cx,y1:cy,x2,y2,stroke:"#e5dfd2","stroke-width":1}));
+  });
+
+  // barras radiales
+  IND.forEach((d,i)=>{
+    if(d.v===0) return;
+    const a=ang(i), r0=R*0.20, len=(R*d.v/MAX)-r0;
+    const x1=cx+Math.cos(a)*r0, y1=cy+Math.sin(a)*r0;
+    const bad = d.n==="evaluación";
+    const bar=el("line",{x1,y1,
+      x2:cx+Math.cos(a)*(r0+len), y2:cy+Math.sin(a)*(r0+len),
+      stroke: bad?"#c8452c":"#2f5d8a", "stroke-width":bad?14:18, "stroke-linecap":"round",
+      opacity:0});
+    if(!visible.includes(i)){bar.setAttribute("opacity",0);}
+    else{
+      bar.style.transition=`stroke-dashoffset .7s cubic-bezier(.2,.7,.2,1) ${i*0.055}s, opacity .3s ${i*0.055}s`;
+      bar.setAttribute("opacity",bad?1:.9);
+      const L=r0+len;
+      bar.style.strokeDasharray=L; bar.style.strokeDashoffset=L;
+      requestAnimationFrame(()=>{bar.style.strokeDashoffset=0;});
+    }
+    svg.appendChild(bar);
+    if(visible.includes(i)){
+      const t=el("text",{x:cx+Math.cos(a)*(R+16), y:cy+Math.sin(a)*(R+16),
+        "text-anchor": Math.abs(Math.cos(a))<0.25?"middle":(Math.cos(a)>0?"start":"end"),
+        "dominant-baseline":"middle", "font-size":12.5, "letter-spacing":".04em",
+        fill: bad?"#c8452c":"#5b574a", "font-weight": bad?600:400});
+      t.textContent=d.s;
+      t.style.opacity=0;
+      t.style.transition=`opacity .45s ${i*0.055+0.15}s`;
+      requestAnimationFrame(()=>{t.style.opacity=1;});
+      svg.appendChild(t);
+      if(len>30){
+        const rv=r0+len-16;
+        const val=el("text",{x:cx+Math.cos(a)*rv, y:cy+Math.sin(a)*rv,
+          "text-anchor":"middle","dominant-baseline":"middle","font-size":11.5,
+          fill:"#f4f1ea","font-weight":600});
+        val.textContent=d.v;
+        svg.appendChild(val);
+      }
+    }
+  });
+
+  mount.innerHTML=""; mount.style.height="100%"; mount.appendChild(svg);
+}
+
+/* ============================================================
+   Dos series temporales con escalas independientes.
+   ============================================================ */
+function drawCurvas(){
+  const svg=document.getElementById("curvas"), W=1120,H=430;
+  const L=92,Rr=96,T=54,B=64;
+  const x=y=>L+(W-L-Rr)*(y-2010)/(2026-2010);
+  const yA=v=>H-B-(H-T-B)*(v/55000);   // estudiantes
+  const yB=c=>H-B-(H-T-B)*(c/4);       // cursos activos
+
+  const g=(t,a)=>{const e=el(t,a);svg.appendChild(e);return e;};
+  const txt=(x,y,s,a={})=>{const t=g("text",Object.assign({x,y},a));t.textContent=s;return t;};
+
+  // rejilla horizontal
+  [0,10000,20000,30000,40000,50000].forEach(v=>{
+    g("line",{x1:L,y1:yA(v),x2:W-Rr,y2:yA(v),stroke:"#e5dfd2","stroke-width":1});
+    txt(L-12,yA(v),v===0?"0":(v/1000)+"k",{"text-anchor":"end","dominant-baseline":"middle","font-size":11.5,fill:"#8d8574"});
+  });
+  txt(L,T-30,"ESTUDIANTES / AÑO",{"text-anchor":"start","font-size":11.5,"letter-spacing":".12em",fill:"#2f5d8a","font-weight":600});
+  txt(W-Rr,T-30,"CURSOS EN CATÁLOGO",{"text-anchor":"end","font-size":11.5,"letter-spacing":".12em",fill:"#c8452c","font-weight":600});
+  // escala propia de la serie de cursos, a la derecha
+  for(let c=1;c<=4;c++){
+    g("line",{x1:W-Rr,y1:yB(c),x2:W-Rr+5,y2:yB(c),stroke:"#c8452c","stroke-width":1,opacity:.6});
+    txt(W-Rr+10,yB(c),c,{"text-anchor":"start","dominant-baseline":"middle","font-size":11.5,fill:"#c8452c","font-weight":500});
+  }
+
+  // eje temporal
+  g("line",{x1:L,y1:H-B,x2:W-Rr,y2:H-B,stroke:"#b9b0a0","stroke-width":1.2});
+  [2010,2013,2014,2018,2022,2026].forEach(y=>{
+    g("line",{x1:x(y),y1:H-B,x2:x(y),y2:H-B+6,stroke:"#b9b0a0"});
+    txt(x(y),H-B+24,y,{"text-anchor":"middle","font-size":12,fill:"#5b574a"});
+  });
+
+  // marcador de agosto de 2026
+  const xm=x(2026);
+  g("line",{x1:xm,y1:T-8,x2:xm,y2:H-B,stroke:"#c8452c","stroke-width":1,"stroke-dasharray":"4 4",opacity:.55});
+
+  // serie A · alcance
+  const a=[{y:2013,v:17000},{y:2014,v:50000,fc:true},{y:2026,v:30444}];
+  g("path",{d:`M${x(2013)},${yA(17000)} L${x(2014)},${yA(50000)}`,stroke:"#2f5d8a","stroke-width":2.6,fill:"none","stroke-dasharray":"7 6"});
+  g("path",{d:`M${x(2014)},${yA(50000)} L${x(2026)},${yA(30444)}`,stroke:"#2f5d8a","stroke-width":2.6,fill:"none"});
+  g("path",{d:`M${x(2013)},${yA(17000)} L${x(2014)},${yA(50000)}`,stroke:"#2f5d8a","stroke-width":2.6,fill:"none","stroke-dasharray":"7 6"});
+  a.forEach(p=>{
+    g("circle",{cx:x(p.y),cy:yA(p.v),r:5,fill:p.fc?"#f4f1ea":"#2f5d8a",stroke:"#2f5d8a","stroke-width":2});
+  });
+  txt(x(2013)+13,yA(17000)-14,"17.000 estudiantes · 230 escuelas",{"text-anchor":"start","font-size":12.5,fill:"#2f5d8a","font-weight":500});
+  txt(x(2014)+14,yA(50000)-14,"previsión 2014: 50.000",{"text-anchor":"start","font-size":12.5,fill:"#5b574a"});
+  txt(x(2026)-14,yA(30444)-24,"30.444 al año (2026)",{"text-anchor":"end","font-size":12.5,fill:"#2f5d8a","font-weight":600});
+
+  // serie B · cursos activos (escalón)
+  const y3=yB(3), y1=yB(1);
+  g("path",{d:`M${x(2010)+24},${y3} L${x(2026)-2},${y3}`,stroke:"#c8452c","stroke-width":3,fill:"none"});
+  g("path",{d:`M${x(2026)-2},${y3} L${x(2026)-2},${y1}`,stroke:"#c8452c","stroke-width":3,fill:"none"});
+  txt(x(2010)+30,y3-13,"tres cursos",{"text-anchor":"start","font-size":12.5,fill:"#c8452c","font-weight":500});
+  txt(x(2026)-20,y1-14,"uno",{"text-anchor":"end","font-size":12.5,fill:"#c8452c","font-weight":600});
+  txt(x(2026)-10,H-B+44,"ago. 2026: los cursos anteriores dejan de mantenerse",{"text-anchor":"end","font-size":12,fill:"#c8452c"});
+}
+
+/* ============================================================
+   Navegación
+   ============================================================ */
+const slides=[...document.querySelectorAll(".slide")];
+const total=slides.length; let i=0;
+document.getElementById("tot").textContent=total;
+drawCurvas();
+function paint(){
+  slides.forEach((s,k)=>s.classList.toggle("on",k===i));
+  document.getElementById("cur").textContent=i+1;
+  document.getElementById("pbar").style.width=((i+1)/total*100)+"%";
+  document.getElementById("prev").disabled=i===0;
+  document.getElementById("next").disabled=i===total-1;
+  // dianas por etapa
+  const stages={6:[],7:[0,3,5,6],8:[0,1,3,4,5,6,8],9:[0,1,2,3,4,5,6,7,8,9]};
+  Object.entries(stages).forEach(([id,vis])=>{
+    const m=document.getElementById("diana-"+id);
+    requestAnimationFrame(()=>drawDiana(m,vis));
+  });
+}
+function go(n){i=Math.max(0,Math.min(total-1,n));paint();}
+document.getElementById("next").onclick=()=>go(i+1);
+document.getElementById("prev").onclick=()=>go(i-1);
+document.getElementById("print").onclick=()=>window.print();
+addEventListener("keydown",e=>{
+  if(["ArrowRight","PageDown"," "].includes(e.key)){e.preventDefault();go(i+1);}
+  if(["ArrowLeft","PageUp"].includes(e.key)){e.preventDefault();go(i-1);}
+  if(e.key==="Home")go(0); if(e.key==="End")go(total-1);
+});
+paint();
+</script>
+</body>
+</html>
