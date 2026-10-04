@@ -27,9 +27,7 @@ Como apoyo puntual, la **escalera de los cuatro niveles de prototipado** (de los
 ## Estructura
 
 ```text
-.
-├── index.html   # la presentación, en un único fichero autocontenido
-└── assets/      # diana, balanza y curvas en SVG
+└── index.html   # la presentación entera: HTML, CSS y los tres gráficos en SVG en línea
 ```
 
 Sin paso de compilación ni dependencias: un HTML con el CSS y el SVG en línea, servido directamente por GitHub Pages. Se versiona tal cual se publica, sin `node_modules` ni CI de por medio.
