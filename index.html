@@ -63,6 +63,12 @@
   .data-c{color:var(--data)}
   .small{font-size:13.5px;color:var(--ink-soft)}
   .rule{height:1px;background:var(--line);margin:18px 0}
+  a{color:var(--data);text-decoration:none;border-bottom:1px solid rgba(47,93,138,.35);cursor:pointer;transition:color .15s,border-color .15s}
+  a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  .links{display:grid;gap:7px}
+  .links .lb{font:500 11px var(--mono);letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft)}
+  .links a{font-family:var(--mono);font-size:13px}
+  .links .det{font-size:13.5px;color:var(--ink-soft)}
   .num{font:600 13px var(--mono);color:var(--accent)}
 
   /* ---------- portada ---------- */
@@ -132,7 +138,7 @@
   .refl li{font-size:14.5px;line-height:1.45;margin-bottom:7px}
 
   /* ---------- referencias ---------- */
-  .refs li{font-size:14.5px;line-height:1.5;margin-bottom:9px}
+  .refs li{font-size:14.5px;line-height:1.5;margin-bottom:9px;overflow-wrap:anywhere}
   .refs{list-style:none;padding:0;margin:0}
 
   /* ---------- pie ---------- */
@@ -277,6 +283,11 @@
         </div>
         <p class="small">El contraste entre los dos recuadros del centro no es un detalle: el proyecto ha <b>estrechado su franja de edad</b> desde la ficha de 2014.</p>
       </div>
+    </div>
+    <div class="links anim" style="margin-top:20px;border-top:1px solid var(--line);padding-top:14px">
+      <span class="lb">Enlace al proyecto y documentación</span>
+      <span><a href="https://www.appsforgood.org/" target="_blank" rel="noopener">appsforgood.org</a> &nbsp;·&nbsp; <a href="https://www.appsforgood.org/our-course" target="_blank" rel="noopener">/our-course</a> &nbsp;·&nbsp; <a href="https://www.appsforgood.org/impact" target="_blank" rel="noopener">/impact</a> &nbsp;·&nbsp; <a href="https://www.appsforgood.org/showcase" target="_blank" rel="noopener">/showcase</a></span>
+      <span class="det">Y la ficha del proyecto en el <a href="https://www.fundaciontelefonica.com/cultura-digital/publicaciones/341/" target="_blank" rel="noopener">Top 100 Innovaciones Educativas</a> de Fundación Telefónica (2014), páginas 23 a 26.</span>
     </div>
     <div class="foot"><span>El proyecto</span><span>02</span></div>
   </section>
@@ -476,9 +487,10 @@
     <h2 class="anim">Referencias y fuentes</h2>
     <div class="two" style="margin-top:20px;height:auto;align-items:start">
       <ul class="refs anim">
-        <li>Fundación Telefónica. (2014). <em>Top 100 innovaciones educativas: 100 proyectos eficaces para fomentar las vocaciones científico-tecnológicas (STEM)</em>. Fundación Telefónica.</li>
-        <li>Apps for Good. (2026). <em>Our course: AI for Good 2.0</em>. https://www.appsforgood.org/our-course</li>
-        <li>Apps for Good. (2026). <em>Impact: Our 2025/26 impact journey</em>. https://www.appsforgood.org/impact</li>
+        <li>Apps for Good. (2026). <em>Apps for Good</em>. <a href="https://www.appsforgood.org/" target="_blank" rel="noopener">https://www.appsforgood.org/</a></li>
+        <li>Apps for Good. (2026). <em>Our course: AI for Good 2.0</em>. <a href="https://www.appsforgood.org/our-course" target="_blank" rel="noopener">https://www.appsforgood.org/our-course</a></li>
+        <li>Apps for Good. (2026). <em>Impact: Our 2025/26 impact journey</em>. <a href="https://www.appsforgood.org/impact" target="_blank" rel="noopener">https://www.appsforgood.org/impact</a></li>
+        <li>Fundación Telefónica. (2014). <em>Top 100 innovaciones educativas: 100 proyectos eficaces para fomentar las vocaciones científico-tecnológicas (STEM)</em>. Fundación Telefónica. <a href="https://www.fundaciontelefonica.com/cultura-digital/publicaciones/341/" target="_blank" rel="noopener">https://www.fundaciontelefonica.com/cultura-digital/publicaciones/341/</a></li>
       </ul>
       <div class="stack anim">
         <div class="card"><div class="tag">Análisis · ficha del Top 100</div><p>Páginas 23 a 26. Las citas del análisis se referencian por página de esa ficha.</p></div>
