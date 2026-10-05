@@ -52,14 +52,11 @@ También funciona abriendo el fichero directamente (`file://`); el servidor solo
 
 ## Publicación
 
-GitHub Pages **no está habilitado todavía**: en el plan actual (Free), Pages no admite repositorios privados.
+**Publicada:** <https://pcaro.github.io/maes-actividad1/> → este es el enlace que pide la actividad.
 
-```bash
-# cuando se decida publicar
-gh repo edit pcaro/maes-actividad1 --visibility public --accept-visibility-change-consequences
-gh api -X POST repos/pcaro/maes-actividad1/pages -f 'source[branch]=main' -f 'source[path]=/'
-```
+Servida por GitHub Pages desde la rama `main`, en la raíz. El repositorio es público: en el plan Free, Pages no admite repositorios privados, y de todos modos la actividad exige un enlace público, así que un repositorio privado solo habría ocultado el código fuente.
 
-La URL quedará en `https://pcaro.github.io/maes-actividad1/`.
+Dos cosas que conviene saber de este despliegue:
 
-Nota: aun en planes de pago, la web publicada es siempre pública; un repositorio privado solo oculta el código fuente. Como la actividad exige un enlace público, el contenido será visible en cualquier caso.
+- **El primer build falló** con `Page build failed` (duración cero) y el siguiente construyó sin problemas. El error no se reprodujo y no llegué a determinar la causa; se añadió `.nojekyll` como medida preventiva. Si alguna vez vuelve a fallar, se consulta con `gh api repos/pcaro/maes-actividad1/pages/builds/latest`.
+- El PDF de la entrega se sirve también desde aquí: `actividad-1-apps-for-good.pdf`.
