@@ -545,11 +545,11 @@
 const IND = [
   {n:"aprendizaje vital",        s:"experiencia de aprendizaje vital", v:3},
   {n:"metodologías activas",     s:"metodologías activas",   v:4},
-  {n:"más allá del aula",        s:"más allá",       v:2},
-  {n:"aprendizaje colaborativo", s:"colaborativo",  v:4},
-  {n:"aprendizaje C21",          s:"C21",           v:4},
-  {n:"auténtico y significativo",s:"auténtico",     v:3},
-  {n:"basado en retos",          s:"retos",         v:4},
+  {n:"más allá del aula",        s:"más allá del aula",       v:2},
+  {n:"aprendizaje colaborativo", s:"aprendizaje colaborativo",  v:4},
+  {n:"aprendizaje C21",          s:"aprendizaje C21",           v:4},
+  {n:"auténtico y significativo",s:"aprendizaje auténtico",     v:3},
+  {n:"basado en retos",          s:"basado en retos",         v:4},
   {n:"evaluación",               s:"evaluación",    v:3},
   {n:"uso de las TIC",           s:"Uso de las TIC",           v:4},
   {n:"sostenibilidad",           s:"sostenibilidad",v:3}
@@ -580,11 +580,12 @@ function drawDiana(mount, visible){
     const a=ang(i), r0=R*0.20, len=(R*d.v/MAX)-r0;
     const x1=cx+Math.cos(a)*r0, y1=cy+Math.sin(a)*r0;
     const bad = d.n==="más allá del aula";
+    const vis = visible.includes(i);
     const bar=el("line",{x1,y1,
       x2:cx+Math.cos(a)*(r0+len), y2:cy+Math.sin(a)*(r0+len),
       stroke: bad?"#c8452c":"#2f5d8a", "stroke-width":bad?14:18, "stroke-linecap":"round",
       opacity:0});
-    if(!visible.includes(i)){bar.setAttribute("opacity",0);}
+    if(!vis){bar.setAttribute("opacity",0);}
     else{
       bar.style.transition=`stroke-dashoffset .7s cubic-bezier(.2,.7,.2,1) ${i*0.055}s, opacity .3s ${i*0.055}s`;
       bar.setAttribute("opacity",bad?1:.9);
@@ -593,24 +594,23 @@ function drawDiana(mount, visible){
       requestAnimationFrame(()=>{bar.style.strokeDashoffset=0;});
     }
     svg.appendChild(bar);
-    if(visible.includes(i)){
-      const t=el("text",{x:cx+Math.cos(a)*(R+16), y:cy+Math.sin(a)*(R+16),
-        "text-anchor": Math.abs(Math.cos(a))<0.25?"middle":(Math.cos(a)>0?"start":"end"),
-        "dominant-baseline":"middle", "font-size":12.5, "letter-spacing":".04em",
-        fill: bad?"#c8452c":"#5b574a", "font-weight": bad?600:400});
-      t.textContent=d.s;
-      t.style.opacity=0;
-      t.style.transition=`opacity .45s ${i*0.055+0.15}s`;
-      requestAnimationFrame(()=>{t.style.opacity=1;});
-      svg.appendChild(t);
-      if(len>30){
-        const rv=r0+len-16;
-        const val=el("text",{x:cx+Math.cos(a)*rv, y:cy+Math.sin(a)*rv,
-          "text-anchor":"middle","dominant-baseline":"middle","font-size":11.5,
-          fill:"#f4f1ea","font-weight":600});
-        val.textContent=d.v;
-        svg.appendChild(val);
-      }
+    // etiqueta: siempre visible (también en la diana vacía); en rojo solo cuando el eje está activo
+    const t=el("text",{x:cx+Math.cos(a)*(R+16), y:cy+Math.sin(a)*(R+16),
+      "text-anchor": Math.abs(Math.cos(a))<0.25?"middle":(Math.cos(a)>0?"start":"end"),
+      "dominant-baseline":"middle", "font-size":11.5, "letter-spacing":".02em",
+      fill: (bad&&vis)?"#c8452c":"#5b574a", "font-weight": (bad&&vis)?600:400});
+    t.textContent=d.s;
+    t.style.opacity=0;
+    t.style.transition=`opacity .45s ${i*0.055+0.15}s`;
+    requestAnimationFrame(()=>{t.style.opacity=1;});
+    svg.appendChild(t);
+    if(vis && len>30){
+      const rv=r0+len-16;
+      const val=el("text",{x:cx+Math.cos(a)*rv, y:cy+Math.sin(a)*rv,
+        "text-anchor":"middle","dominant-baseline":"middle","font-size":11.5,
+        fill:"#f4f1ea","font-weight":600});
+      val.textContent=d.v;
+      svg.appendChild(val);
     }
   });
 
