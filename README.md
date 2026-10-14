@@ -24,6 +24,17 @@ Arco elegido, de los cinco planteados:
 
 Como apoyo puntual, la **escalera de los cuatro niveles de prototipado** (de los *wireframes* a JavaScript con API, p. 25 de la ficha implícita). La idea de presentarlo como una *app* se reserva como guiño de portada, sin desarrollar.
 
+## Actualización (14/10/2026)
+
+Tras las clases del **29/09**, **05/10** y **13/10** se incorporaron al deck los criterios de evaluación que explicó el profesor:
+
+- **Nueva diapositiva 8 · «Cómo puntúo»**, con los criterios operativos del decálogo: no hay una puntuación única, «aprender haciendo» no es metodología activa, «más allá del aula» = contextos formales e informales, retos abiertos, evaluación en doble vertiente, TIC = uso y sostenibilidad = replicabilidad explícita.
+- **Justificaciones de los indicadores** matizadas en los bloques 1, 2 y 3 (compromiso emocional, colaborativa vs cooperativa, doble vertiente de la evaluación, contexto formal/informal).
+- **Reflexión** ampliada con el aprendizaje-servicio y la atención a los estilos de aprendizaje (Kolb).
+- **Referencias**: tarjeta de cotejo con las sesiones 29/09, 05/10 y 13/10.
+
+El PDF `actividad-1-apps-for-good.pdf` se regeneró con el mismo método (DevTools `Page.printToPDF` con `preferCSSPageSize`), ahora con 15 páginas.
+
 ## Estructura
 
 ```text
