@@ -1,6 +1,6 @@
 # Actividad 1 · Evaluación de un proyecto de innovación docente
 
-Presentación digital de la Actividad 1 de **Innovación docente e Iniciación a la Investigación Educativa** (MAES, especialidad Tecnología e Informática): evaluación del proyecto **Apps for Good** con el Decálogo de un Proyecto Innovador de Fundación Telefónica.
+Presentación digital de la Actividad 1 de **Innovación docente e Iniciación a la Investigación Educativa** (MAES, especialidad Tecnología e Informática): evaluación del proyecto **FIRST LEGO League** con el Decálogo de un Proyecto Innovador de Fundación Telefónica.
 
 **Entrega:** 19 de octubre de 2026 · **Peso:** 5 de los 15 puntos de la evaluación continua.
 
@@ -10,7 +10,6 @@ El análisis y las fuentes viven en el repositorio de trabajo del máster, `pcar
 
 - `trabajo/02-actividad-1.md` — análisis completo (características, descripción, los 10 indicadores del Decálogo, diana, reflexión y referencias APA 7).
 - `trabajo/00-seleccion-proyecto.md` — informe de selección del proyecto y alternativas descartadas.
-- `trabajo/01-apps-for-good-ficha-top100.txt` — ficha del proyecto en el Top 100 (2014, págs. 23-26).
 
 Este repositorio contiene **solo la pieza visual**.
 
@@ -18,17 +17,17 @@ Este repositorio contiene **solo la pieza visual**.
 
 Arco elegido, de los cinco planteados:
 
-1. **La diana como columna vertebral.** La diana no es una diapositiva final: aparece al principio casi vacía y se enciende un eje por bloque del análisis, hasta formar el polígono completo. El cierre deja a la vista el hallazgo: nueve ejes altos y el de **evaluación hundido en 1**.
-2. **El gráfico del vacío ("lo que el proyecto mide / lo que no mide").** Columna llena frente a columna vacía: encuestas de percepción y métricas de programa frente a la ausencia de rúbrica de aprendizaje e instrumentos de evaluación de competencias.
-3. **Dos curvas que se cruzan.** Línea temporal 2010-2026: el alcance crece (17.000 estudiantes y 230 escuelas en 2013; 6.000 estudiantes de 196 centros en Cataluña en enero de 2014; 30.444 al año hoy) mientras los productos del propio programa desaparecen (los cursos anteriores dejaron de mantenerse en agosto de 2026). El eje de sostenibilidad en una sola imagen.
+1. **La diana como columna vertebral.** La diana no es una diapositiva final: aparece al principio casi vacía y se enciende un eje por bloque del análisis, hasta formar el polígono completo. El cierre deja a la vista el hallazgo: ocho ejes en 4, dos en 3 y el de **aprendizaje más allá del aula hundido en 2**.
+2. **El gráfico del vacío ("sale del centro / no sale del aula").** Dos columnas enfrentadas: los torneos y el jurado sacan al alumnado del centro en lo geográfico, pero no en la naturaleza del aprendizaje —no hay contexto informal ni servicio real a la comunidad—.
+3. **Sostenibilidad en tres cifras.** En lugar de una curva, tres tarjetas: 679.000 participantes en 110 países, 14.000 en España y Andorra, y una trayectoria desde 1998. El programa es muy sostenible; la barrera es de acceso (coste), no de continuidad.
 
-Como apoyo puntual, la **escalera de los cuatro niveles de prototipado** (de los *wireframes* a JavaScript con API, p. 25 de la ficha implícita). La idea de presentarlo como una *app* se reserva como guiño de portada, sin desarrollar.
+Como apoyo puntual, los **tres pilares** (Proyecto de Innovación, Juego del Robot y Core Values). La idea de presentar el proyecto como un *robot* se reserva como guiño de portada, sin desarrollar.
 
 ## Estructura
 
 ```text
-├── index.html                       # la presentación entera: HTML, CSS y los tres gráficos en SVG en línea
-└── actividad-1-apps-for-good.pdf    # la misma presentación en PDF, una diapositiva por página
+├── index.html                              # la presentación entera: HTML, CSS y la diana en SVG en línea
+└── actividad-1-first-lego-league.pdf       # la misma presentación en PDF, una diapositiva por página
 ```
 
 ### El PDF
@@ -59,4 +58,4 @@ Servida por GitHub Pages desde la rama `main`, en la raíz. El repositorio es p�
 Dos cosas que conviene saber de este despliegue:
 
 - **El primer build falló** con `Page build failed` (duración cero) y el siguiente construyó sin problemas. El error no se reprodujo y no llegué a determinar la causa; se añadió `.nojekyll` como medida preventiva. Si alguna vez vuelve a fallar, se consulta con `gh api repos/pcaro/maes-actividad1/pages/builds/latest`.
-- El PDF de la entrega se sirve también desde aquí: `actividad-1-apps-for-good.pdf`.
+- El PDF de la entrega se sirve también desde aquí: `actividad-1-first-lego-league.pdf`.

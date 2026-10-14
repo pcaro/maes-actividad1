@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Apps for Good · Actividad 1 · Innovación docente (MAES)</title>
+<title>FIRST LEGO League · Actividad 1 · Innovación docente (MAES)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -113,15 +113,6 @@
   ol.steps b{font-weight:600;font-size:15.5px}
   ol.steps span{color:var(--ink-soft);font-size:14.5px}
 
-  /* ---------- escalera de prototipado ---------- */
-  .stairs{display:flex;align-items:flex-end;gap:14px;height:250px;margin-top:8px}
-  .step{flex:1;background:#fbf9f4;border:1px solid var(--line);border-bottom:3px solid var(--data);
-    padding:12px 12px 10px;display:grid;align-content:end;gap:5px}
-  .step:nth-child(1){height:38%}.step:nth-child(2){height:58%}.step:nth-child(3){height:78%}.step:nth-child(4){height:98%}
-  .step .lv{font:600 11px var(--mono);letter-spacing:.1em;color:var(--data)}
-  .step .tt{font:600 14px var(--sans);line-height:1.25}
-  .step .tool{font:400 11.5px/1.35 var(--mono);color:var(--ink-soft)}
-
   /* ---------- gráfico del vacío ---------- */
   .gap{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);background:#fbf9f4;height:100%}
   .gap .col{padding:20px 22px}
@@ -188,7 +179,7 @@
     <div class="cover">
       <div class="cover-text">
         <div class="kicker anim">Actividad 1 · Innovación docente e Iniciación a la Investigación Educativa</div>
-        <h1 class="anim">Apps for Good</h1>
+        <h1 class="anim">FIRST LEGO League</h1>
         <p class="lede anim" style="margin-top:20px;max-width:54ch">Evaluación de la calidad del proyecto con el <em>Decálogo de un Proyecto Innovador</em> de Fundación Telefónica: diez indicadores, una escala de 0 a 4 y una conclusión que señala un déficit concreto.</p>
         <div class="byline anim">
           <span class="who">Pablo Caro Revuelta</span>
@@ -198,7 +189,7 @@
         </div>
       </div>
       <div class="art anim">
-        <svg viewBox="0 0 470 430" role="img" aria-label="Cuatro pantallas en cascada: bocetos, bloques, código y producto conectado">
+        <svg viewBox="0 0 470 430" role="img" aria-label="Robot construido con piezas de LEGO sobre un engranaje">
           <defs>
             <pattern id="dots" width="15" height="15" patternUnits="userSpaceOnUse">
               <circle cx="2" cy="2" r="1.1" fill="#cec7b6"/>
@@ -211,100 +202,73 @@
           </defs>
           <rect x="0" y="0" width="470" height="430" fill="url(#dots)" mask="url(#fade)"/>
 
-          <!-- bocetos -->
-          <g transform="translate(70 120) rotate(-13 85 140)">
-            <rect width="170" height="280" rx="16" fill="#fbf9f4" stroke="#cbc4b4"/>
-            <rect x="24" y="32" width="64" height="9" rx="4.5" fill="#ded7c7"/>
-            <rect x="24" y="54" width="122" height="9" rx="4.5" fill="#ded7c7"/>
-            <rect x="24" y="96" width="122" height="78" rx="8" fill="none" stroke="#cbc4b4" stroke-dasharray="5 5"/>
-            <rect x="24" y="196" width="86" height="9" rx="4.5" fill="#ded7c7"/>
+          <!-- engranaje de fondo -->
+          <g transform="translate(310 300)" fill="none" stroke="#cbc4b4" stroke-width="12">
+            <circle r="62" stroke-dasharray="18 12"/>
+            <circle r="26"/>
           </g>
+          <circle cx="310" cy="300" r="7" fill="#2f5d8a"/>
 
-          <!-- bloques -->
-          <g transform="translate(120 96) rotate(-8 85 140)">
-            <rect width="170" height="280" rx="16" fill="#fbf9f4" stroke="#cbc4b4"/>
-            <g fill="#2f5d8a">
-              <rect x="24" y="30" width="26" height="26" rx="4" opacity=".30"/>
-              <rect x="56" y="30" width="26" height="26" rx="4" opacity=".55"/>
-              <rect x="88" y="30" width="26" height="26" rx="4" opacity=".80"/>
-              <rect x="120" y="30" width="26" height="26" rx="4"/>
-              <rect x="24" y="62" width="26" height="26" rx="4" opacity=".55"/>
-              <rect x="56" y="62" width="26" height="26" rx="4"/>
-              <rect x="88" y="62" width="26" height="26" rx="4" opacity=".30"/>
-              <rect x="120" y="62" width="26" height="26" rx="4" opacity=".70"/>
-              <rect x="24" y="94" width="26" height="26" rx="4" opacity=".80"/>
-              <rect x="56" y="94" width="26" height="26" rx="4" opacity=".30"/>
-              <rect x="88" y="94" width="26" height="26" rx="4"/>
-              <rect x="120" y="94" width="26" height="26" rx="4" opacity=".50"/>
-            </g>
-            <rect x="24" y="152" width="70" height="9" rx="4.5" fill="#ded7c7"/>
-          </g>
-
-          <!-- código -->
-          <g transform="translate(170 72) rotate(-3 85 140)">
-            <rect width="170" height="280" rx="16" fill="#fbf9f4" stroke="#cbc4b4"/>
-            <g rx="3">
-              <rect x="24" y="34" width="92" height="8" rx="4" fill="#2f5d8a"/>
-              <rect x="34" y="56" width="58" height="8" rx="4" fill="#ded7c7"/>
-              <rect x="34" y="78" width="104" height="8" rx="4" fill="#ded7c7"/>
-              <rect x="46" y="100" width="46" height="8" rx="4" fill="#c8452c" opacity=".8"/>
-              <rect x="34" y="122" width="86" height="8" rx="4" fill="#ded7c7"/>
-              <rect x="24" y="144" width="64" height="8" rx="4" fill="#2f5d8a" opacity=".7"/>
-              <rect x="34" y="166" width="98" height="8" rx="4" fill="#ded7c7"/>
-              <rect x="24" y="188" width="52" height="8" rx="4" fill="#ded7c7"/>
-            </g>
-          </g>
-
-          <!-- producto conectado -->
-          <g transform="translate(220 48) rotate(2 85 140)">
-            <rect width="170" height="280" rx="16" fill="#fbf9f4" stroke="#16150f" stroke-width="1.6"/>
-            <rect x="22" y="24" width="126" height="4" rx="2" fill="#16150f" opacity=".12"/>
-            <g transform="translate(85 128)">
-              <g stroke="#2f5d8a" stroke-width="7" stroke-linecap="round">
-                <line x1="0" y1="-16" x2="0" y2="-46"/>
-                <line x1="11" y1="-11" x2="32" y2="-32"/>
-                <line x1="16" y1="0" x2="46" y2="0"/>
-                <line x1="11" y1="11" x2="32" y2="32"/>
-                <line x1="-11" y1="-11" x2="-32" y2="-32"/>
-                <line x1="-16" y1="0" x2="-46" y2="0"/>
-                <line x1="-11" y1="11" x2="-32" y2="32"/>
-              </g>
-              <line x1="0" y1="16" x2="0" y2="22" stroke="#c8452c" stroke-width="7" stroke-linecap="round"/>
-              <circle r="3.4" fill="#16150f"/>
-            </g>
-            <rect x="52" y="222" width="66" height="9" rx="4.5" fill="#ded7c7"/>
-            <rect x="40" y="240" width="90" height="9" rx="4.5" fill="#ded7c7"/>
+          <!-- robot -->
+          <g transform="translate(135 52)">
+            <!-- antena -->
+            <line x1="95" y1="42" x2="95" y2="10" stroke="#16150f" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="95" cy="7" r="6" fill="#c8452c"/>
+            <!-- cabeza -->
+            <rect x="48" y="42" width="94" height="72" rx="10" fill="#fbf9f4" stroke="#16150f" stroke-width="2"/>
+            <rect x="62" y="58" width="20" height="20" rx="4" fill="#2f5d8a"/>
+            <rect x="108" y="58" width="20" height="20" rx="4" fill="#2f5d8a"/>
+            <rect x="76" y="90" width="38" height="8" rx="4" fill="#cbc4b4"/>
+            <!-- cuello -->
+            <rect x="88" y="114" width="14" height="14" fill="#cbc4b4"/>
+            <!-- cuerpo -->
+            <rect x="34" y="128" width="122" height="118" rx="10" fill="#fbf9f4" stroke="#16150f" stroke-width="2"/>
+            <!-- hub -->
+            <rect x="60" y="148" width="70" height="44" rx="6" fill="#2f5d8a"/>
+            <circle cx="73" cy="170" r="5" fill="#fbf9f4"/>
+            <circle cx="95" cy="170" r="5" fill="#fbf9f4"/>
+            <circle cx="117" cy="170" r="5" fill="#fbf9f4"/>
+            <!-- botones -->
+            <rect x="66" y="206" width="58" height="20" rx="4" fill="#cbc4b4"/>
+            <!-- brazos -->
+            <rect x="8" y="138" width="18" height="70" rx="8" fill="#cbc4b4"/>
+            <rect x="164" y="138" width="18" height="70" rx="8" fill="#cbc4b4"/>
+            <!-- ruedas -->
+            <circle cx="70" cy="272" r="20" fill="#16150f"/>
+            <circle cx="70" cy="272" r="9" fill="#f4f1ea"/>
+            <circle cx="120" cy="272" r="20" fill="#16150f"/>
+            <circle cx="120" cy="272" r="9" fill="#f4f1ea"/>
           </g>
         </svg>
       </div>
     </div>
-    <div class="foot"><span>Apps for Good · análisis con el Decálogo</span><span>01</span></div>
+    <div class="foot"><span>FIRST LEGO League · análisis con el Decálogo</span><span>01</span></div>
   </section>
 
   <!-- 2 · EL PROYECTO EN 30 SEGUNDOS -->
   <section class="slide">
     <div class="kicker anim">El proyecto</div>
-    <h2 class="anim">Un movimiento que convierte el aula en un estudio de producto</h2>
+    <h2 class="anim">Un programa que convierte el aula en un equipo de robótica</h2>
     <div class="two" style="margin-top:18px;height:auto">
       <div class="stack anim">
-        <p>Nació en Londres en <b>2010</b>. Los estudiantes, por equipos y durante un curso escolar, eligen un problema real de su entorno y diseñan, prototipan y presentan una aplicación móvil o web que lo resuelva.</p>
-        <p>No enseña programación como contenido aislado, sino dentro del proceso completo de creación de un producto: idea, viabilidad técnica, desarrollo, modelo de negocio y comunicación.</p>
-        <p class="small">Hoy es una ONG educativa británica (Registered Charity 1133656), <b>gratuita para los centros</b>, articulada en torno al curso <em>AI for Good 2.0</em>.</p>
+        <p>Cada curso, equipos de estudiantes afrontan un <b>desafío anual inspirado en un problema real</b>. Diseñan, construyen y programan un robot de LEGO y desarrollan un proyecto de innovación sobre el tema del año.</p>
+        <p>El trabajo se organiza en <b>tres pilares</b>: el Proyecto de Innovación, el Juego del Robot y los Core Values (trabajo en equipo e inclusión).</p>
+        <p class="small">Lo impulsan la organización FIRST y LEGO Education desde finales de los años noventa; en España lo organiza la asociación <b>Ingeniera Soy</b>.</p>
       </div>
       <div class="stack anim">
         <div class="three" style="grid-template-columns:1fr 1fr;gap:18px">
-          <div class="card"><div class="tag">Alcance</div><p><b class="mono" style="font-size:22px">30.444</b><br>estudiantes al año</p></div>
-          <div class="card"><div class="tag">Edad hoy</div><p><b class="mono" style="font-size:22px">11-14</b><br>1.º y 2.º de ESO (KS3)</p></div>
-          <div class="card"><div class="tag">Ficha 2014</div><p><b class="mono" style="font-size:22px">10-18</b><br>toda la secundaria</p></div>
-          <div class="card"><div class="tag">Coste</div><p><b class="mono" style="font-size:22px">0 €</b><br>para el centro</p></div>
+          <div class="card"><div class="tag">Alcance</div><p><b class="mono" style="font-size:22px">679.000</b><br>participantes · 110 países</p></div>
+          <div class="card"><div class="tag">España</div><p><b class="mono" style="font-size:22px">14.000</b><br>participantes · 1.400 equipos</p></div>
+          <div class="card"><div class="tag">Edad (Challenge)</div><p><b class="mono" style="font-size:22px">10-16</b><br>toda la ESO y 1.º Bach.</p></div>
+          <div class="card"><div class="tag">Temporada</div><p><b class="mono" style="font-size:22px">BIOGLOW</b><br>2026/27 · biodiversidad</p></div>
         </div>
-        <p class="small">El contraste entre los dos recuadros del centro no es un detalle: el proyecto ha <b>estrechado su franja de edad</b> desde la ficha de 2014.</p>
+        <p class="small">La ficha de 2014 la llamaba <em>LEGO League</em> y marcaba la franja <b>9-14 años</b>; hoy la categoría Challenge se dirige a 10-16.</p>
       </div>
     </div>
     <div class="links anim" style="margin-top:20px;border-top:1px solid var(--line);padding-top:14px">
       <span class="lb">Enlace al proyecto y documentación</span>
-      <span><a href="https://www.appsforgood.org/" target="_blank" rel="noopener">appsforgood.org</a> &nbsp;·&nbsp; <a href="https://www.appsforgood.org/our-course" target="_blank" rel="noopener">/our-course</a> &nbsp;·&nbsp; <a href="https://www.appsforgood.org/impact" target="_blank" rel="noopener">/impact</a> &nbsp;·&nbsp; <a href="https://www.appsforgood.org/showcase" target="_blank" rel="noopener">/showcase</a></span>
-      <span class="det">Y la ficha del proyecto en el <em>Top 100 Innovaciones Educativas</em> de Fundación Telefónica (2014), páginas 23 a 26.</span>
+      <span><a href="https://firstlegoleague.soy/" target="_blank" rel="noopener">firstlegoleague.soy</a> &nbsp;·&nbsp; <a href="https://firstlegoleague.soy/challenge/" target="_blank" rel="noopener">/challenge</a> &nbsp;·&nbsp; <a href="https://firstlegoleague.soy/class-pack/" target="_blank" rel="noopener">/class-pack</a> &nbsp;·&nbsp; <a href="https://www.firstlegoleague.org/" target="_blank" rel="noopener">firstlegoleague.org</a></span>
+      <span class="det">Y la ficha del proyecto en el <em>Top 100 Innovaciones Educativas</em> de Fundación Telefónica (2014), página 98.</span>
     </div>
     <div class="foot"><span>El proyecto</span><span>02</span></div>
   </section>
@@ -315,12 +279,12 @@
     <h2 class="anim">El proyecto en detalle</h2>
     <div class="two" style="margin-top:12px;align-items:start;height:auto">
       <div class="anim">
-        <p class="desc">Apps for Good es un movimiento educativo nacido en 2010 en Londres que traslada a las aulas de secundaria la lógica del emprendimiento tecnológico: los estudiantes, organizados en equipos y a lo largo de un curso escolar, identifican un problema real de su entorno que les preocupa y diseñan, prototipan y presentan una aplicación móvil o web que contribuya a resolverlo. El programa no enseña programación como contenido aislado, sino dentro del proceso completo de creación de un producto: generación de ideas, análisis de viabilidad técnica, desarrollo, modelo de negocio y comunicación. Ofrece cuatro niveles de prototipado que permiten ajustar la exigencia técnica al punto de partida del alumnado, desde los bocetos de tipo <em>wireframe</em> hasta el código real en JavaScript y el uso de API. El profesorado recibe el contenido del curso y la formación, y el programa lo conecta con profesionales voluntarios del sector tecnológico que actúan como mentores de los equipos y acercan el aula a la vida profesional real. El curso culmina en unos premios nacionales en los que los mejores equipos compiten por desarrollar su producto con apoyo de la organización. Actualmente se articula en torno a <em>AI for Good 2.0</em>, un curso modular de doce sesiones, gratuito para los centros, en el que el alumnado construye aplicaciones con inteligencia artificial orientadas al impacto social, con dos itinerarios —JavaScript o programación asistida con Canva Code— y contenidos explícitos de alfabetización y uso responsable de la IA (Fundación Telefónica, 2014, págs. 23-26; Apps for Good, s.f.).</p>
+        <p class="desc">FIRST LEGO League (FLL) es un programa educativo internacional de robótica, impulsado desde finales de los años noventa por la organización FIRST y LEGO Education, que cada curso plantea a equipos de estudiantes un desafío anual inspirado en un problema real. Los equipos, de dos a diez integrantes y guiados por un entrenador adulto, trabajan durante meses en tres frentes: el <em>Proyecto de Innovación</em>, donde investigan un problema del tema del año y proponen una solución con impacto en su comunidad; el <em>Juego del Robot</em>, donde diseñan, construyen y programan un robot autónomo de LEGO (SPIKE Prime, EV3 o Mindstorms) para superar misiones sobre un tapete oficial; y los <em>Core Values</em>, el compromiso con el trabajo en equipo, la inclusión y el <em>Gracious Professionalism®</em> que vertebra todo el proceso. La temporada culmina en torneos —eventos locales y una gran final nacional—, donde cada equipo presenta su proyecto y compite con el robot ante un jurado que evalúa con rúbricas. En España lo organiza la asociación Ingeniera Soy, con categorías de 5 a 16 años (<em>Discover</em>, <em>Explore</em> y <em>Challenge</em>) y una modalidad <em>Class Pack</em> para trabajarlo íntegramente en el aula. La temporada 2026/27, <em>BIOGLOW</em>, gira en torno a la biodiversidad, el hilo conductor del Proyecto de Innovación y de las misiones del robot (Fundación Telefónica, 2014, p. 98; FIRST LEGO League Spain, s.f.).</p>
       </div>
       <div class="stack anim">
-        <div class="card"><div class="tag">Objetivos generales</div><p>Vincular la educación tecnológica con la resolución de problemas reales; desarrollar la capacidad emprendedora y de programación del alumnado; y apoyar al profesorado con contenido y formación ya elaborados (Fundación Telefónica, 2014, págs. 24-25).</p></div>
-        <div class="card"><div class="tag">Áreas de conocimiento implicadas</div><p>Tecnología, Informática y Computación; de forma transversal, emprendimiento y ciudadanía digital (Fundación Telefónica, 2014, pág. 23).</p></div>
-        <div class="card win"><div class="tag">Un ejemplo concreto</div><p>En Bosworth Academy participa todo el alumnado en las sesiones con profesionales del sector, no solo los equipos con la mejor aplicación: «it helps the development of social and team working skills» (Gill Wright, responsable CREW; Apps for Good, s.f.).</p></div>
+        <div class="card"><div class="tag">Objetivos generales</div><p>Despertar vocaciones científico-tecnológicas; desarrollar el pensamiento crítico, la codificación y el diseño; y fomentar el trabajo en equipo, la inclusión y el <em>Gracious Professionalism®</em> (Fundación Telefónica, 2014, p. 98; FIRST LEGO League Spain, s.f.).</p></div>
+        <div class="card"><div class="tag">Áreas de conocimiento implicadas</div><p>Tecnología, robótica, programación y pensamiento computacional; de forma transversal, ciencias, comunicación y valores (tipología 2014: <em>contacto con entorno profesional</em>).</p></div>
+        <div class="card win"><div class="tag">Un ejemplo concreto</div><p>Una madre lo resume desde el aula: «Ya hemos participado en ediciones anteriores y los niños lo pasan muy bien, los meses que entrenan y luego en las finales» (Eva Muñoz; FIRST LEGO League Spain, s.f.).</p></div>
       </div>
     </div>
     <div class="foot"><span>Características y descripción</span><span>03</span></div>
@@ -329,18 +293,18 @@
   <!-- 4 · LA NECESIDAD -->
   <section class="slide">
     <div class="kicker anim">La necesidad a la que responde</div>
-    <h2 class="anim">Los sistemas educativos están perdiendo talento</h2>
+    <h2 class="anim">Despertar vocaciones STEM desde el aula</h2>
     <div class="two" style="margin-top:20px;height:auto">
       <div class="stack anim">
         <blockquote style="margin:0;border-left:3px solid var(--accent);padding:4px 0 4px 20px;font:italic 400 19px/1.5 var(--serif);color:#26241d">
-          «La tecnología estimula la imaginación de los jóvenes, que quieren utilizarla para crear, jugar y compartir. Sin embargo, la escuela tradicional está muy rezagada, perdiendo la oportunidad de participar y aprovechar la tecnología para generar ricas experiencias de aprendizaje, especialmente para aquellos estudiantes más desencantados con los métodos tradicionales.»
+          «El programa educativo internacional de referencia que despierta el ingenio y fomenta vocaciones científico-tecnológicas entre los jóvenes, a través de desafíos del mundo real y la robótica de LEGO Education.»
         </blockquote>
-        <p class="small">Fundación Telefónica (2014, p. 24)</p>
+        <p class="small">FIRST LEGO League Spain (s.f.)</p>
       </div>
       <div class="stack anim">
-        <div class="card"><div class="tag">Diagnóstico 1</div><p>La escuela no prepara para el mundo real, dominado por los continuos avances tecnológicos.</p></div>
-        <div class="card"><div class="tag">Diagnóstico 2</div><p>La tecnología escolar no se conecta con desafíos y problemas reales, y pierde relevancia ante el alumnado.</p></div>
-        <div class="card"><div class="tag">Diagnóstico 3</div><p>El profesorado, consciente del potencial, se siente frustrado por no poder hacer más.</p></div>
+        <div class="card"><div class="tag">Diagnóstico 1</div><p>Déficit de vocaciones científico-tecnológicas y poca relevancia de la tecnología en la escuela.</p></div>
+        <div class="card"><div class="tag">Diagnóstico 2</div><p>La robótica y la programación rara vez llegan al aula como actividad estructurada, motivadora y con proyección.</p></div>
+        <div class="card"><div class="tag">Diagnóstico 3</div><p>Se necesita un marco que combine lo técnico y lo actitudinal —trabajo en equipo e inclusión— en un solo proyecto.</p></div>
       </div>
     </div>
     <div class="foot"><span>La necesidad</span><span>04</span></div>
@@ -349,35 +313,34 @@
   <!-- 5 · CÓMO FUNCIONA -->
   <section class="slide">
     <div class="kicker anim">Cómo funciona</div>
-    <h2 class="anim">El proceso completo de un producto, de principio a fin</h2>
+    <h2 class="anim">De la idea al robot, y del robot al torneo</h2>
     <div class="two" style="margin-top:16px;height:auto">
       <ol class="steps anim">
-        <li><span><b>El equipo elige el problema.</b> <span>Un problema real que les preocupa; el punto de partida lo pone el alumnado, no el temario.</span></span></li>
-        <li><span><b>Generación de ideas.</b> <span>Propuestas de solución y análisis de su viabilidad técnica.</span></span></li>
-        <li><span><b>Prototipado por niveles.</b> <span>Cada estudiante entra por el nivel que puede sostener; el producto crece.</span></span></li>
-        <li><span><b>Mentoría de profesionales.</b> <span>Voluntarios del sector tecnológico acompañan al equipo en sesiones de una hora, presenciales o por videoconferencia.</span></span></li>
-        <li><span><b>Pitch y competición.</b> <span>Los mejores equipos presentan su producto en los premios nacionales.</span></span></li>
+        <li><span><b>El equipo elige su problema.</b> <span>En el Proyecto de Innovación investiga un problema real del tema del año y propone una solución con impacto en su comunidad.</span></span></li>
+        <li><span><b>Diseña y construye el robot.</b> <span>Con LEGO SPIKE Prime, EV3 o Mindstorms: sensores, motores y estructura.</span></span></li>
+        <li><span><b>Programa el robot.</b> <span>Lo programa para superar las misiones del tapete oficial de la temporada.</span></span></li>
+        <li><span><b>Core Values.</b> <span>Trabajo en equipo, inclusión y <em>Gracious Professionalism®</em> en todo el proceso.</span></span></li>
+        <li><span><b>Compite.</b> <span>Torneos locales y gran final nacional, ante un jurado que evalúa con rúbricas.</span></span></li>
       </ol>
       <div class="stack anim">
-        <div class="card win"><div class="tag">Lo que sostiene el modelo</div><p>El docente recibe contenido y formación ya elaborados, y el programa le trae la red de profesionales. Dos de las barreras clásicas del aula —el material y la conexión con el mundo profesional— las resuelve la organización.</p></div>
-        <div class="card"><div class="tag">Lo que exige del centro</div><p>Dispositivos para trabajo por equipos, tiempo real de aula y un docente dispuesto a ceder el control del temario al alumnado.</p></div>
+        <div class="card win"><div class="tag">Lo que sostiene el modelo</div><p>FIRST y LEGO Education aportan el material y la red de torneos; Ingeniera Soy lo organiza en España. La modalidad <em>Class Pack</em> permite desarrollarlo íntegramente en el aula, sin asistir al evento.</p></div>
+        <div class="card"><div class="tag">Lo que exige del centro</div><p>Un kit LEGO Education, tiempo de entrenamiento y un docente con formación básica en robótica educativa.</p></div>
       </div>
     </div>
     <div class="foot"><span>Cómo funciona</span><span>05</span></div>
   </section>
 
-  <!-- 6 · ESCALERA DE PROTOTIPADO -->
+  <!-- 6 · TRES PILARES -->
   <section class="slide">
     <div class="kicker anim">La mejor idea del proyecto</div>
-    <h2 class="anim">Cuatro niveles de prototipado, una sola clase</h2>
-    <div class="stairs anim">
-      <div class="step"><span class="lv">NIVEL 1 · BÁSICO</span><span class="tt">Bocetos</span><span class="tool">wireframes<br>Balsamiq · POP</span></div>
-      <div class="step"><span class="lv">NIVEL 2 · BLOQUES</span><span class="tt">Programación por bloques</span><span class="tool">App Inventor 1 y 2<br>AppShed</span></div>
-      <div class="step"><span class="lv">NIVEL 3 · WEB</span><span class="tt">Código de verdad</span><span class="tool">Blockly → JavaScript<br>HTML + CSS · JSBin</span></div>
-      <div class="step"><span class="lv">NIVEL 4 · SOCIAL</span><span class="tt">Producto conectado</span><span class="tool">JavaScript · plugins<br>API de servicios sociales</span></div>
+    <h2 class="anim">Tres pilares, un solo desafío</h2>
+    <div class="three anim" style="margin-top:22px">
+      <div class="card win"><div class="tag">Pilar 1 · Proyecto de Innovación</div><p>Investigar un problema real del tema del año y proponer una solución creativa con impacto en la comunidad.</p></div>
+      <div class="card win"><div class="tag">Pilar 2 · Juego del Robot</div><p>Diseñar, construir y programar un robot autónomo de LEGO (SPIKE Prime, EV3 o Mindstorms) para superar misiones sobre el tapete oficial.</p></div>
+      <div class="card win"><div class="tag">Pilar 3 · Core Values</div><p>Competir de forma ética: trabajo en equipo, inclusión y <em>Gracious Professionalism®</em>, evaluados por el jurado con rúbrica propia.</p></div>
     </div>
     <div class="rule"></div>
-    <p class="anim" style="max-width:96ch">Es la respuesta a un problema clásico de la informática en el aula: <b>niveles de partida muy dispares</b>. Aquí no se fragmenta el grupo en dos asignaturas ni se deja atrás a nadie; el mismo proyecto admite cuatro profundidades y todos terminan en un producto presentable (Fundación Telefónica, 2014, p. 25).</p>
+    <p class="anim" style="max-width:96ch">La mejor idea es esa triple exigencia: el proyecto obliga a <b>investigar</b>, a <b>construir</b> y a <b>colaborar</b>, y evalúa las tres cosas por separado. Lo técnico no se separa de lo actitudinal: el trabajo en equipo tiene la misma categoría que el robot (FIRST LEGO League Spain, s.f.).</p>
     <div class="foot"><span>Cómo funciona</span><span>06</span></div>
   </section>
 
@@ -388,7 +351,7 @@
     <div class="two" style="margin-top:6px">
       <div class="stack anim" style="max-width:46ch">
         <p>Los diez criterios del <em>Decálogo</em>, sobre el plano. Cada eje se valora de <span class="mono">0</span> (ausencia) a <span class="mono">4</span> (alto), y la valoración se expresa en cuatro niveles: ausencia, bajo, medio y alto.</p>
-        <div class="card" style="border-left:3px solid var(--data)"><div class="tag">El instrumento</div><p>El <em>Decálogo</em> es la guía práctica que Fundación Telefónica publica para diseñar y evaluar proyectos educativos innovadores. <a href="https://www.fundaciontelefonica.com/cultura-digital/publicaciones/341/" target="_blank" rel="noopener">Decálogo de un proyecto innovador: guía práctica</a> (Fundación Telefónica, s.f.).</p></div>
+        <div class="card" style="border-left:3px solid var(--data)"><div class="tag">El instrumento</div><p>El <em>Decálogo</em> es la guía práctica que Fundación Telefónica publica para diseñar y evaluar proyectos educativos innovadores. <a href="https://www.fundaciontelefonica.com/cultura-digital/publicaciones/341/" target="_blank" rel="noopener">Decálogo de un proyecto innovador: guía práctica</a> (Área de Innovación Educativa de Fundación Telefónica, 2014). Cada nivel se justifica y no hay una puntuación única (criterios de clase, 29/09 y 05/10).</p></div>
         <p class="small mono" style="font-size:12px;line-height:1.5;color:var(--ink-soft)">Los diez indicadores: experiencia de aprendizaje vital · metodologías activas · aprendizaje más allá del aula · aprendizaje colaborativo · competencias del siglo XXI · aprendizaje auténtico y significativo · aprendizaje basado en retos · la evaluación como herramienta de aprendizaje · experiencia de aprendizaje digital · aprendizaje sostenible.</p>
       </div>
       <div id="diana-6" class="dwrap"></div>
@@ -396,16 +359,36 @@
     <div class="foot"><span>El instrumento</span><span>07</span></div>
   </section>
 
-  <!-- 8 · BLOQUE 1 -->
+  <!-- 8 · CRITERIOS DE VALORACIÓN (clases 29/09 y 05/10) -->
+  <section class="slide">
+    <div class="kicker anim">El criterio</div>
+    <h2 class="anim">Cómo puntúo · lo que fijó el profesor en clase</h2>
+    <div class="two" style="margin-top:6px">
+      <div class="stack anim">
+        <div class="card"><div class="tag">No hay una puntuación única</div><p>Cada nivel (0-4) se <b>justifica</b>: «esto no es algo fijo, depende del enfoque con el que yo esté evaluando» (clases 29/09 y 05/10).</p></div>
+        <div class="card"><div class="tag">Metodologías activas · ind. 2</div><p>«Aprender haciendo» <b>no</b> es una metodología activa; lo son el ABP, el aprendizaje colaborativo y el basado en retos (clase 05/10).</p></div>
+        <div class="card"><div class="tag">Más allá del aula · ind. 3</div><p>Unir contextos <b>formales e informales</b>; trasladar al alumnado a un escenario contextualizado dentro de la clase sigue siendo el aula (clase 05/10).</p></div>
+      </div>
+      <div class="stack anim">
+        <div class="card"><div class="tag">Retos · ind. 7</div><p>El 4 se da con retos <b>abiertos y creativos</b>; se admite un 3 si están muy dirigidos o acotados por el docente (clase 05/10).</p></div>
+        <div class="card"><div class="tag">Evaluación · ind. 8</div><p><b>Doble vertiente</b>: cómo se evalúa al alumnado (hetero, co y autoevaluación) y cómo el proyecto mide su propio impacto (clase 05/10).</p></div>
+        <div class="card"><div class="tag">TIC y sostenibilidad · ind. 9 y 10</div><p>En TIC el 4 valora el <b>uso</b> (producir, compartir, evaluar), no la autonomía; en sostenibilidad exige <b>replicabilidad explícita</b> (clase 05/10).</p></div>
+      </div>
+    </div>
+    <p class="temp anim">El análisis se apoya además en los <b>estilos de aprendizaje de Kolb</b> y en los <b>paisajes de aprendizaje</b> (clase 13/10).</p>
+    <div class="foot"><span>El criterio</span><span>08</span></div>
+  </section>
+
+  <!-- 9 · BLOQUE 1 -->
   <section class="slide">
     <div class="kicker anim">Análisis · bloque 1 de 3</div>
     <h2 class="anim">Lo que le ocurre al alumnado</h2>
     <div class="two" style="margin-top:6px">
       <div class="stack anim">
-        <div class="card win"><div class="tag">Experiencia de aprendizaje vital · 3 (alto)</div><p>El emprendimiento y el bien social sitúan el proyecto más allá de la nota: <em>«tecnología como catalizador para transformar vidas y comunidades»</em> (Fundación Telefónica, 2014, p. 24).</p></div>
-        <div class="card win"><div class="tag">Aprendizaje auténtico y significativo · 3 (alto)</div><p>El problema lo eligen ellos y les importa: aprendizaje conectado a problemas reales, con contexto y propósito.</p></div>
-        <div class="card win"><div class="tag">Aprendizaje basado en retos · 3 (alto)</div><p>Reto abierto, de viabilidad no garantizada, con resultado incierto: la condición del aprendizaje basado en retos.</p></div>
-        <div class="card win"><div class="tag">Aprendizaje colaborativo · 3 (alto)</div><p>Todo el proyecto se construye en equipo, de principio a fin.</p></div>
+        <div class="card win"><div class="tag">Experiencia de aprendizaje vital · 3 (alto)</div><p>Busca «despertar vocaciones científico-tecnológicas» y formar a la próxima generación de líderes en STEM; la ficha la tipifica como <em>contacto con entorno profesional</em> (Fundación Telefónica, 2014, p. 98). Evidencia sobre todo testimonial.</p></div>
+        <div class="card win"><div class="tag">Aprendizaje auténtico y significativo · 3 (alto)</div><p>El reto es real —la temporada <em>BIOGLOW</em> gira en torno a la biodiversidad— y el alumnado elige su problema y su solución. Pero la solución se orienta al tapete y al jurado, no llega a usuarios reales.</p></div>
+        <div class="card win"><div class="tag">Aprendizaje basado en retos · 4 (alto)</div><p>Un desafío anual abierto y creativo: el tema es el marco, pero cada equipo decide su problema, su solución y sus misiones. Retos plenamente abiertos.</p></div>
+        <div class="card win"><div class="tag">Aprendizaje colaborativo · 4 (alto)</div><p>Equipos de 2 a 10 integrantes con roles, y el trabajo en equipo es un pilar evaluado por sí mismo (Core Values), no un simple medio.</p></div>
       </div>
       <div id="diana-7" class="dwrap"></div>
     </div>
@@ -413,16 +396,16 @@
     <div class="foot"><span>Análisis · 1 de 3</span><span>08</span></div>
   </section>
 
-  <!-- 9 · BLOQUE 2 -->
+  <!-- 10 · BLOQUE 2 -->
   <section class="slide">
     <div class="kicker anim">Análisis · bloque 2 de 3</div>
     <h2 class="anim">Cómo se enseña</h2>
     <div class="two" style="margin-top:6px">
       <div class="stack anim">
-        <div class="card win"><div class="tag">Uso de las TIC · 4 (alto)</div><p>El punto más fuerte: la tecnología no es accesoria, es el medio de producción (de los bocetos al código con API).</p></div>
-        <div class="card win"><div class="tag">Metodologías activas · 3 (alto)</div><p>El alumnado elige, propone y construye; el docente orienta. Bajo el 4 porque el material prefabricado sigue marcando bastante el camino.</p></div>
-        <div class="card win"><div class="tag">Aprendizaje C21 · 3 (alto)</div><p>Creatividad, comunicación, trabajo en equipo y resolución de problemas (Fundación Telefónica, 2014, p. 25).</p></div>
-        <div class="card"><div class="tag">Aprendizaje más allá del aula · 2 (medio)</div><p>Entran profesionales del sector y hay premios externos, pero el curso se imparte dentro del aula y del horario escolar. <b>Se queda en medio.</b></p></div>
+        <div class="card win"><div class="tag">Uso de las TIC · 4 (alto)</div><p>El punto más fuerte: la robótica es el medio de producción. Se diseña, construye y programa un robot autónomo con sensores y motores. Uso productivo, no consumo.</p></div>
+        <div class="card win"><div class="tag">Metodologías activas · 4 (alto)</div><p>ABP (Proyecto de Innovación), aprender haciendo (Juego del Robot) y aprendizaje colaborativo (Core Values). Varias metodologías activas reales, no solo «aprender haciendo».</p></div>
+        <div class="card win"><div class="tag">Aprendizaje C21 · 4 (alto)</div><p>Pensamiento crítico, creatividad, resolución de problemas y comunicación (defender el proyecto ante el jurado), más codificación y diseño.</p></div>
+        <div class="card bad"><div class="tag">Aprendizaje más allá del aula · 2 (medio)</div><p>Los torneos sacan al alumnado del centro, pero un torneo sigue siendo un entorno de aprendizaje formal y estructurado, no un contexto informal. <b>Se queda en medio.</b></p></div>
       </div>
       <div id="diana-8" class="dwrap"></div>
     </div>
@@ -430,15 +413,15 @@
     <div class="foot"><span>Análisis · 2 de 3</span><span>09</span></div>
   </section>
 
-  <!-- 10 · BLOQUE 3 (diana completa) -->
+  <!-- 11 · BLOQUE 3 (diana completa) -->
   <section class="slide center">
     <div class="kicker anim">Análisis · bloque 3 de 3</div>
     <h2 class="anim">Qué lo sostiene</h2>
     <div class="two" style="margin-top:6px">
       <div class="stack anim">
-        <div class="card bad"><div class="tag accent">Evaluación · 1 (bajo)</div><p>Es el punto débil y no debe ocultarse. Lo que el proyecto documenta son <b>encuestas de percepción</b> y métricas de programa, no instrumentos de evaluación del aprendizaje. No hay rúbrica pública y la calificación queda entera en manos del docente.</p></div>
-        <div class="card"><div class="tag">Sostenibilidad · 3 (alto)</div><p>Quince años en marcha, 30.444 estudiantes al año y un modelo de réplica probado. Bajo a 3 por una fragilidad real: la gráfica siguiente.</p></div>
-        <div class="card" style="border-left:3px solid var(--ink)"><div class="tag">Lectura del conjunto</div><p>Nueve ejes altos y uno hundido. El proyecto resuelve con solvencia la mayoría de los indicadores; <b>no sabe demostrar lo que sus alumnos aprenden</b>.</p></div>
+        <div class="card win"><div class="tag">Evaluación · 3 (alto)</div><p>Jurado con <b>rúbricas públicas</b> por pilares (robot, proyecto y Core Values): heteroevaluación estructurada. Pero su finalidad es <b>clasificar</b>, no formativa (Santos Guerra, 2024), y no publica evidencias de aprendizaje comparables.</p></div>
+        <div class="card win"><div class="tag">Sostenibilidad · 4 (alto)</div><p>Más de dos décadas, 110 países, 679.000 participantes, respaldo de LEGO Education y FIRST, y <em>Class Pack</em> para el aula. Replicabilidad explícita.</p></div>
+        <div class="card" style="border-left:3px solid var(--ink)"><div class="tag">Lectura del conjunto</div><p>Ocho ejes en 4, dos en 3 y uno hundido. El proyecto es casi redondo en lo metodológico y tecnológico, pero <b>no sale del entorno formal de la competición</b>.</p></div>
       </div>
       <div id="diana-9" class="dwrap"></div>
     </div>
@@ -446,47 +429,51 @@
     <div class="foot"><span>Análisis · 3 de 3</span><span>10</span></div>
   </section>
 
-  <!-- 11 · EL VACÍO -->
+  <!-- 12 · EL VACÍO -->
   <section class="slide">
     <div class="kicker anim">El hallazgo</div>
-    <h2 class="anim">Lo que el proyecto mide · y lo que no mide</h2>
+    <h2 class="anim">Dónde se queda el proyecto: dentro del entorno formal</h2>
     <div style="margin-top:16px;height:392px" class="anim">
       <div class="gap">
         <div class="col">
-          <h3>Documentado y publicado</h3>
+          <h3>Sale del centro</h3>
           <ul class="yes">
-            <li>Encuestas de percepción a estudiantes y profesorado</li>
-            <li>Número de equipos, voluntarios y revisiones en el <em>Showcase</em></li>
-            <li>Autodeclaración de confianza en habilidades informáticas</li>
-            <li>Evaluación externa (Institute for Employment Studies) de un curso anterior</li>
-            <li>Memoria de impacto anual y teoría del cambio</li>
+            <li>Torneos locales y gran final nacional fuera del aula</li>
+            <li>Jurados y voluntariado del mundo profesional</li>
+            <li>Contacto con equipos de otros centros</li>
+            <li>Modalidad <em>Class Pack</em> para el aula</li>
           </ul>
-          <div class="verdict">→ Muchos datos. Todos de proceso o de opinión.</div>
+          <div class="verdict">→ Sale del centro en lo geográfico.</div>
         </div>
         <div class="col">
-          <h3>Ausente</h3>
+          <h3>No sale del aula</h3>
           <ul class="no">
-            <li>Rúbrica de aprendizaje del alumnado</li>
-            <li>Instrumentos de evaluación de las competencias curriculares</li>
-            <li>Evidencias de aprendizaje comparables entre centros</li>
+            <li>El torneo es un entorno formal y estructurado, no informal</li>
+            <li>El proyecto no llega a usuarios reales de la comunidad</li>
+            <li>No hay aprendizaje-servicio</li>
+            <li>El «impacto en la comunidad» se declara, no se verifica</li>
           </ul>
-          <div class="verdict">→ El hueco del eje 8. Y lo sabe: su informe habla de «evolucionar el enfoque para medir el impacto».</div>
+          <div class="verdict">→ El hueco del eje 3: no une contextos formales e informales.</div>
         </div>
       </div>
     </div>
     <div class="foot"><span>El hallazgo</span><span>11</span></div>
   </section>
 
-  <!-- 12 · SOSTENIBILIDAD -->
+  <!-- 13 · SOSTENIBILIDAD -->
   <section class="slide center">
     <div class="kicker anim">Sostenibilidad</div>
-    <h2 class="anim">Crece el alcance, se retiran los productos</h2>
-    <div style="margin-top:8px;height:418px" class="anim"><svg id="curvas" class="chart" viewBox="0 0 1120 430" preserveAspectRatio="xMidYMid meet"></svg></div>
-    <p class="small anim" style="margin-top:6px">Cada serie tiene su propia escala, señalada en su eje. El punto de septiembre de 2014 es la <b>previsión</b> que recogía la ficha, no un resultado medido.</p>
+    <h2 class="anim">Más de dos décadas y en crecimiento</h2>
+    <div class="three anim" style="margin-top:26px">
+      <div class="card"><div class="tag">En el mundo</div><p><b class="mono" style="font-size:30px">679.000</b><br>participantes</p><p class="small">110 países · +3.700 eventos</p></div>
+      <div class="card"><div class="tag">España y Andorra</div><p><b class="mono" style="font-size:30px">14.000</b><br>participantes</p><p class="small">1.400 equipos · 35 eventos</p></div>
+      <div class="card"><div class="tag">Trayectoria</div><p><b class="mono" style="font-size:30px">1998</b><br>desde los inicios</p><p class="small">temporadas anuales · BIOGLOW 26/27</p></div>
+    </div>
+    <p class="small anim" style="margin-top:18px">El programa es muy sostenible —replicabilidad explícita por países y <em>Class Pack</em> para el aula—. La barrera no es de continuidad, sino de <b>acceso</b>: el coste de los kits y la cuota (ver reflexión).</p>
     <div class="foot"><span>Sostenibilidad</span><span>12</span></div>
   </section>
 
-  <!-- 13 · REFLEXIÓN -->
+  <!-- 14 · REFLEXIÓN -->
   <section class="slide center">
     <div class="kicker anim">Reflexión</div>
     <h2 class="anim">Qué me llevo, qué me frenaría y cómo lo resolvería</h2>
@@ -494,52 +481,52 @@
       <div class="box">
         <h3>Lo que aplicaría mañana</h3>
         <ul style="padding-left:18px;margin:0">
-          <li><b>El problema antes que la herramienta.</b> Que el alumnado elija qué quiere resolver y después aprenda el código que haga falta.</li>
-          <li><b>Los niveles como respuesta a la diversidad:</b> un mismo proyecto con cuatro profundidades posibles.</li>
-          <li><b>Alguien de fuera dando retroalimentación a mitad de camino</b> convierte la tarea en una propuesta de verdad.</li>
+          <li><b>El reto abierto como motor.</b> Que el alumnado elija su problema antes de que se le enseñe la técnica.</li>
+          <li><b>Evaluar lo actitudinal:</b> hacer del trabajo en equipo un criterio con rúbrica propia, como los Core Values.</li>
+          <li><b>Presentar ante un tribunal externo</b> convierte la tarea en una propuesta de verdad.</li>
         </ul>
       </div>
       <div class="box b">
         <h3>Lo que me frenaría</h3>
         <ul style="padding-left:18px;margin:0">
-          <li>Material pensado para el currículo británico, en inglés y hoy orientado a 11-14 años.</li>
-          <li><b>Su propio agujero:</b> si adopto el proyecto, heredo la falta de evaluación y tengo que diseñarla yo.</li>
-          <li>Dispositivos, conexión, tiempo de aula y una red de mentores que no se improvisa.</li>
-          <li>Protección de datos y uso aceptable de IA con menores.</li>
+          <li><b>Coste y equidad:</b> los kits LEGO Education y la cuota no están al alcance de cualquier IES.</li>
+          <li>Material internacional, por temporadas; hay que encajarlo en la LOMLOE.</li>
+          <li>Tiempo y formación docente en robótica educativa.</li>
+          <li>Evaluación <b>clasificatoria</b> (jurado), no formativa; y un perfil competitivo que puede dejar atrás al alumnado más reflexivo (Kolb).</li>
         </ul>
       </div>
     </div>
     <div class="rule"></div>
     <div class="three anim" style="gap:22px">
       <div><div class="num">01</div><p style="font-size:14.5px"><b>Adaptar, no adoptar:</b> quedarme con el esqueleto metodológico y construir los materiales contra los saberes de la LOMLOE.</p></div>
-      <div><div class="num">02</div><p style="font-size:14.5px"><b>Cerrar el hueco:</b> diseñar mi propia rúbrica y diana de autoevaluación; convierto la debilidad del proyecto en mi punto fuerte.</p></div>
-      <div><div class="num">03</div><p style="font-size:14.5px"><b>Mentores de la comunidad</b> —familias, antiguos alumnos, FP del entorno, voluntariado en línea— en lugar de depender de una gran empresa.</p></div>
+      <div><div class="num">02</div><p style="font-size:14.5px"><b>Empezar por el Class Pack:</b> un solo kit y un grupo de pilotaje, antes que el torneo completo.</p></div>
+      <div><div class="num">03</div><p style="font-size:14.5px"><b>Cerrar el hueco con aprendizaje-servicio</b> y completar la evaluación con rúbricas de proceso.</p></div>
     </div>
-    <p class="temp anim">La propuesta se alinea con la <b>LOMLOE</b> (saberes de Tecnología y Digitalización en ESO), el <b>aprendizaje basado en proyectos</b> y la <b>tríada autoevaluación, coevaluación y heteroevaluación</b>.</p>
+    <p class="temp anim">La propuesta se alinea con la <b>LOMLOE</b> (saberes de Tecnología y Digitalización en ESO), el <b>aprendizaje basado en proyectos</b>, la <b>tríada autoevaluación, coevaluación y heteroevaluación</b> y la <b>transparencia curricular</b>.</p>
     <div class="foot"><span>Reflexión</span><span>13</span></div>
   </section>
 
-  <!-- 14 · REFERENCIAS -->
+  <!-- 15 · REFERENCIAS -->
   <section class="slide">
     <div class="kicker anim">Cierre</div>
     <h2 class="anim">Referencias y fuentes</h2>
     <div class="two" style="margin-top:20px;height:auto;align-items:start">
       <ul class="refs anim">
-        <li>Apps for Good. (s.f.). <em>Apps for Good</em> [página web]. Recuperado el 4 de octubre de 2026, de <a href="https://www.appsforgood.org/" target="_blank" rel="noopener">https://www.appsforgood.org/</a></li>
-        <li>Apps for Good. (s.f.). <em>Our course: AI for Good 2.0</em>. Recuperado el 4 de octubre de 2026, de <a href="https://www.appsforgood.org/our-course" target="_blank" rel="noopener">https://www.appsforgood.org/our-course</a></li>
-        <li>Apps for Good. (s.f.). <em>Impact: Our 2025/26 impact journey</em>. Recuperado el 4 de octubre de 2026, de <a href="https://www.appsforgood.org/impact" target="_blank" rel="noopener">https://www.appsforgood.org/impact</a></li>
-        <li>Fundación Telefónica. (2014). <em>Top 100 innovaciones educativas: 100 proyectos eficaces para fomentar las vocaciones científico-tecnológicas (STEM)</em>. Fundación Telefónica.</li>
-        <li>Fundación Telefónica. (s.f.). <em>Decálogo de un proyecto innovador: guía práctica</em>. Recuperado el 4 de octubre de 2026, de <a href="https://www.fundaciontelefonica.com/cultura-digital/publicaciones/341/" target="_blank" rel="noopener">https://www.fundaciontelefonica.com/cultura-digital/publicaciones/341/</a></li>
-        <li>Santos Guerra, M. Á. (2024). <em>Qué hacemos con el cuchillo: finalidades de la evaluación</em> [material de la asignatura]. Universidad Internacional de La Rioja.</li>
+        <li>Área de Innovación Educativa de Fundación Telefónica. (2014). <em>Decálogo de un proyecto innovador: guía práctica</em>. <a href="https://www.fundaciontelefonica.com/cultura-digital/publicaciones/341/" target="_blank" rel="noopener">https://www.fundaciontelefonica.com/cultura-digital/publicaciones/341/</a></li>
+        <li>FIRST. (s.f.). <em>FIRST LEGO League</em> [página web]. Recuperado el 14 de octubre de 2026, de <a href="https://www.firstlegoleague.org/" target="_blank" rel="noopener">https://www.firstlegoleague.org/</a></li>
+        <li>FIRST LEGO League Spain. (s.f.). <em>FIRST LEGO League España</em> [página web]. Recuperado el 14 de octubre de 2026, de <a href="https://firstlegoleague.soy/" target="_blank" rel="noopener">https://firstlegoleague.soy/</a></li>
+        <li>Fundación Telefónica. (2014). <em>Top 100 innovaciones educativas: 100 proyectos eficaces para fomentar las vocaciones científico-tecnológicas (STEM)</em>. <a href="https://publicaciones.fundaciontelefonica.com/api/view/publication/top-100---innovaciones-educativas/477" target="_blank" rel="noopener">https://publicaciones.fundaciontelefonica.com/api/view/publication/top-100---innovaciones-educativas/477</a></li>
+        <li>Santos Guerra, M. Á. (2024). ¿Qué hacemos con el cuchillo? Las finalidades de la evaluación. <em>Revista Iberoamericana de Evaluación Educativa</em>, <em>17</em>(1). <a href="https://revistas.uam.es/riee/article/view/riee17_1_001" target="_blank" rel="noopener">https://revistas.uam.es/riee/article/view/riee17_1_001</a></li>
         <li>Universidad Internacional de La Rioja. (s.f.). <em>Diana de evaluación de proyectos de innovación</em> [plantilla de la actividad]. Aula virtual de la asignatura.</li>
       </ul>
       <div class="stack anim">
-        <div class="card"><div class="tag">Análisis · ficha del Top 100</div><p>Los datos de la ficha corresponden a las páginas 23 a 26.</p></div>
-        <div class="card"><div class="tag">Análisis · actualización</div><p>Datos de la web oficial del proyecto consultados el 4 de octubre de 2026.</p></div>
+        <div class="card"><div class="tag">Análisis · ficha del Top 100</div><p>Los datos de la ficha corresponden a la página 98.</p></div>
+        <div class="card"><div class="tag">Análisis · actualización</div><p>Datos de la web oficial del proyecto consultados el 14 de octubre de 2026.</p></div>
         <div class="card"><div class="tag">Instrumento</div><p>Los diez indicadores y la diana proceden del <em>Decálogo de un proyecto innovador</em> de Fundación Telefónica.</p></div>
+        <div class="card"><div class="tag">Análisis · cotejo con las clases</div><p>Los niveles se contrastaron con los criterios de evaluación explicados en las sesiones del 29/09, 05/10 y 13/10.</p></div>
       </div>
     </div>
-    <div class="foot"><span>Apps for Good · evaluación con el Decálogo</span><span>14</span></div>
+    <div class="foot"><span>FIRST LEGO League · evaluación con el Decálogo</span><span>14</span></div>
   </section>
 
 </div></main>
@@ -560,15 +547,15 @@
    ============================================================ */
 const IND = [
   {n:"aprendizaje vital",        s:"vital",         v:3},
-  {n:"metodologías activas",     s:"metodologías",   v:3},
+  {n:"metodologías activas",     s:"metodologías",   v:4},
   {n:"más allá del aula",        s:"más allá",       v:2},
-  {n:"aprendizaje colaborativo", s:"colaborativo",  v:3},
-  {n:"aprendizaje C21",          s:"C21",           v:3},
+  {n:"aprendizaje colaborativo", s:"colaborativo",  v:4},
+  {n:"aprendizaje C21",          s:"C21",           v:4},
   {n:"auténtico y significativo",s:"auténtico",     v:3},
-  {n:"basado en retos",          s:"retos",         v:3},
-  {n:"evaluación",               s:"evaluación",    v:1},
+  {n:"basado en retos",          s:"retos",         v:4},
+  {n:"evaluación",               s:"evaluación",    v:3},
   {n:"uso de las TIC",           s:"TIC",           v:4},
-  {n:"sostenibilidad",           s:"sostenibilidad",v:3}
+  {n:"sostenibilidad",           s:"sostenibilidad",v:4}
 ];
 const NS="http://www.w3.org/2000/svg";
 function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
@@ -595,7 +582,7 @@ function drawDiana(mount, visible){
     if(d.v===0) return;
     const a=ang(i), r0=R*0.20, len=(R*d.v/MAX)-r0;
     const x1=cx+Math.cos(a)*r0, y1=cy+Math.sin(a)*r0;
-    const bad = d.n==="evaluación";
+    const bad = d.n==="más allá del aula";
     const bar=el("line",{x1,y1,
       x2:cx+Math.cos(a)*(r0+len), y2:cy+Math.sin(a)*(r0+len),
       stroke: bad?"#c8452c":"#2f5d8a", "stroke-width":bad?14:18, "stroke-linecap":"round",
@@ -634,64 +621,6 @@ function drawDiana(mount, visible){
 }
 
 /* ============================================================
-   Dos series temporales con escalas independientes.
-   ============================================================ */
-function drawCurvas(){
-  const svg=document.getElementById("curvas"), W=1120,H=430;
-  const L=92,Rr=96,T=54,B=64;
-  const x=y=>L+(W-L-Rr)*(y-2010)/(2026-2010);
-  const yA=v=>H-B-(H-T-B)*(v/55000);   // estudiantes
-  const yB=c=>H-B-(H-T-B)*(c/4);       // cursos activos
-
-  const g=(t,a)=>{const e=el(t,a);svg.appendChild(e);return e;};
-  const txt=(x,y,s,a={})=>{const t=g("text",Object.assign({x,y},a));t.textContent=s;return t;};
-
-  // rejilla horizontal
-  [0,10000,20000,30000,40000,50000].forEach(v=>{
-    g("line",{x1:L,y1:yA(v),x2:W-Rr,y2:yA(v),stroke:"#e5dfd2","stroke-width":1});
-    txt(L-12,yA(v),v===0?"0":(v/1000)+"k",{"text-anchor":"end","dominant-baseline":"middle","font-size":11.5,fill:"#8d8574"});
-  });
-  txt(L,T-30,"ESTUDIANTES / AÑO",{"text-anchor":"start","font-size":11.5,"letter-spacing":".12em",fill:"#2f5d8a","font-weight":600});
-  txt(W-Rr,T-30,"CURSOS EN CATÁLOGO",{"text-anchor":"end","font-size":11.5,"letter-spacing":".12em",fill:"#c8452c","font-weight":600});
-  // escala propia de la serie de cursos, a la derecha
-  for(let c=1;c<=4;c++){
-    g("line",{x1:W-Rr,y1:yB(c),x2:W-Rr+5,y2:yB(c),stroke:"#c8452c","stroke-width":1,opacity:.6});
-    txt(W-Rr+10,yB(c),c,{"text-anchor":"start","dominant-baseline":"middle","font-size":11.5,fill:"#c8452c","font-weight":500});
-  }
-
-  // eje temporal
-  g("line",{x1:L,y1:H-B,x2:W-Rr,y2:H-B,stroke:"#b9b0a0","stroke-width":1.2});
-  [2010,2013,2014,2018,2022,2026].forEach(y=>{
-    g("line",{x1:x(y),y1:H-B,x2:x(y),y2:H-B+6,stroke:"#b9b0a0"});
-    txt(x(y),H-B+24,y,{"text-anchor":"middle","font-size":12,fill:"#5b574a"});
-  });
-
-  // marcador de agosto de 2026
-  const xm=x(2026);
-  g("line",{x1:xm,y1:T-8,x2:xm,y2:H-B,stroke:"#c8452c","stroke-width":1,"stroke-dasharray":"4 4",opacity:.55});
-
-  // serie A · alcance
-  const a=[{y:2013,v:17000},{y:2014,v:50000,fc:true},{y:2026,v:30444}];
-  g("path",{d:`M${x(2013)},${yA(17000)} L${x(2014)},${yA(50000)}`,stroke:"#2f5d8a","stroke-width":2.6,fill:"none","stroke-dasharray":"7 6"});
-  g("path",{d:`M${x(2014)},${yA(50000)} L${x(2026)},${yA(30444)}`,stroke:"#2f5d8a","stroke-width":2.6,fill:"none"});
-  g("path",{d:`M${x(2013)},${yA(17000)} L${x(2014)},${yA(50000)}`,stroke:"#2f5d8a","stroke-width":2.6,fill:"none","stroke-dasharray":"7 6"});
-  a.forEach(p=>{
-    g("circle",{cx:x(p.y),cy:yA(p.v),r:5,fill:p.fc?"#f4f1ea":"#2f5d8a",stroke:"#2f5d8a","stroke-width":2});
-  });
-  txt(x(2013)+13,yA(17000)-14,"17.000 estudiantes · 230 escuelas",{"text-anchor":"start","font-size":12.5,fill:"#2f5d8a","font-weight":500});
-  txt(x(2014)+14,yA(50000)-14,"previsión 2014: 50.000",{"text-anchor":"start","font-size":12.5,fill:"#5b574a"});
-  txt(x(2026)-14,yA(30444)-24,"30.444 al año (2026)",{"text-anchor":"end","font-size":12.5,fill:"#2f5d8a","font-weight":600});
-
-  // serie B · cursos activos (escalón)
-  const y3=yB(3), y1=yB(1);
-  g("path",{d:`M${x(2010)+24},${y3} L${x(2026)-2},${y3}`,stroke:"#c8452c","stroke-width":3,fill:"none"});
-  g("path",{d:`M${x(2026)-2},${y3} L${x(2026)-2},${y1}`,stroke:"#c8452c","stroke-width":3,fill:"none"});
-  txt(x(2010)+30,y3-13,"tres cursos",{"text-anchor":"start","font-size":12.5,fill:"#c8452c","font-weight":500});
-  txt(x(2026)-20,y1-14,"uno",{"text-anchor":"end","font-size":12.5,fill:"#c8452c","font-weight":600});
-  txt(x(2026)-10,H-B+44,"ago. 2026: los cursos anteriores dejan de mantenerse",{"text-anchor":"end","font-size":12,fill:"#c8452c"});
-}
-
-/* ============================================================
    Navegación
    ============================================================ */
 const slides=[...document.querySelectorAll(".slide")];
@@ -701,7 +630,6 @@ document.querySelectorAll(".foot span:first-child").forEach(s=>{s.textContent=NO
 document.querySelectorAll(".slide").forEach((s,i)=>{const f=s.querySelector(".foot");if(f)f.lastElementChild.textContent=String(i+1).padStart(2,"0");});
 const total=slides.length; let i=0;
 document.getElementById("tot").textContent=total;
-drawCurvas();
 function paint(){
   slides.forEach((s,k)=>s.classList.toggle("on",k===i));
   document.getElementById("cur").textContent=i+1;
@@ -709,7 +637,7 @@ function paint(){
   document.getElementById("prev").disabled=i===0;
   document.getElementById("next").disabled=i===total-1;
   // dianas por etapa
-  const stages={6:[],7:[0,3,5,6],8:[0,1,3,4,5,6,8],9:[0,1,2,3,4,5,6,7,8,9]};
+  const stages={6:[],7:[0,3,5,6],8:[0,1,2,3,4,5,6,8],9:[0,1,2,3,4,5,6,7,8,9]};
   Object.entries(stages).forEach(([id,vis])=>{
     const m=document.getElementById("diana-"+id);
     requestAnimationFrame(()=>drawDiana(m,vis));
